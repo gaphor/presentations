@@ -26,6 +26,10 @@ with Arjan on Gaphor.
 
 ---
 
+<img src="images/os_market_share.svg" width=2000px>
+
+---
+
 ## What are we talking about
 
 > rough talk outline (draft)

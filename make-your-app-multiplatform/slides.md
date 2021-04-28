@@ -119,6 +119,7 @@ facilitating the creation process and help describe a system in components.
 
 Notes:
 
+(Dan)
  - Keep the toolset small (e.g. depend on GTK, but not on a whole lot of other libraries)
  - Avoid dependency hell
  - All dependencies need to be supported on all platforms
@@ -157,7 +158,7 @@ Notes:
 
 * Approach each platform separately
 * Work with upstream projects
-
+* Integrate platform builds in the build pipeline
 
 ---
 

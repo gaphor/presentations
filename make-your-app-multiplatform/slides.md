@@ -67,12 +67,7 @@ Notes:
 
 ---
 
-## Why go multi-platform
-
-<img src="images/os_market_share.svg">
-
-<small>Source: https://insights.stackoverflow.com/survey/2020</small>
-<small>Source: https://gs.statcounter.com/os-market-share/desktop/</small>
+<!-- .slide: data-background="images/os_market_share.svg"  -->
 
 ---
 

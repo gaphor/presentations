@@ -64,6 +64,14 @@ Notes:
    - library structure (macos libs use absolute references)
 1. Take aways: Approach each platform separately. work with upstream projects. Consolidate
 
+---
+
+## A Vibrant Community
+
+We want the apps we build to be useful for others!
+
+- Users who get value out of using our app
+- Diverse contributors who want to help make it better
 
 ---
 
@@ -73,10 +81,10 @@ Notes:
 
 ## Why go multi-platform
 
-1. Broader user base
-1. Feels more future proof (dog fooding / using at work)
-1. Easier adoption - not bound to a specific OS
-1. Reaches people unfamiliar with Open Source
+1. Broader & more inclusive user base
+1. Helps introduce people to Open Source
+1. More future proof
+1. Improves adaptability - not bound to a specific OS
 
 
 Notes:
@@ -111,7 +119,34 @@ Notes:
 facilitating the creation process and help describe a system in components.
 
 ---
-## Before you begin
+# Setup for Success
+
+---
+
+## Painful Upgrades
+- Gaphor use to have some highly customized GTK2 widgets to allow advanced window docking
+- It was clever, but we would have had to rewrite all of it to upgrade GTK
+
+```python
+class CompactButton(gtk.Widget):
+    __gtype_name__ = 'EtkCompactButton'
+    __gsignals__ = {'clicked':
+                        (gobject.SIGNAL_RUN_FIRST | gobject.SIGNAL_ACTION,
+                         gobject.TYPE_NONE,
+                         tuple())}
+    __gproperties__ = {'icon-name-normal':
+                           (gobject.TYPE_STRING,
+                            'icon name normal',
+                            'icon name normal',
+                            '',
+```
+
+---
+
+## Keep Things Simple
+- Grab a great GUI toolkit
+- Use out of the box widgets and other components
+- Use a few key libraries if needed, ensure dependencies are well supported across platforms
 
 Notes:
 
@@ -121,6 +156,13 @@ Notes:
  - All dependencies need to be supported on all platforms
  - Use GTK out of the box as possible (avoid issues with GTK upgrades)
  - Keep true to the ecosystem (for Python, use pyproject.toml + a python build tool)
+
+---
+
+## Stay True to the Ecosystem
+- Follow the modern best practices for the language you are using
+- These solutions will be tried and true
+- For Python that includes pyproject.toml, black, mypy, coverage.py, flake8, pytest, tox, and isort
 
 ---
 

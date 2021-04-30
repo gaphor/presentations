@@ -38,6 +38,10 @@ with Arjan on Gaphor.
 1. Take aways
 
 Notes:
+
+* Who build software in their spare time?
+* Desktop software?
+
 1. Why go multi-platform (Arjan)
    - Community size is larger (platform user base and developer user base sizes)
 1. What are we targetting (os, installation method, user type, automated) Arjan
@@ -115,7 +119,7 @@ Notes:
 (Arjan)
 * A modeling tool, written in Python (~ 44000 lines)
 * GTK+ 3 (soon GTK 4)
-* why did I start this project almost 2 years ago: modeling should be
+* Why did I start this project almost 20 years ago: modeling should be
 facilitating the creation process and help describe a system in components.
 
 ---
@@ -141,6 +145,10 @@ class CompactButton(gtk.Widget):
                             '',
 ```
 
+Notes:
+(Dan)
+
+@dan should we add this?
 ---
 
 ## Keep Things Simple
@@ -164,31 +172,70 @@ Notes:
 - These solutions will be tried and true
 - For Python that includes pyproject.toml, black, mypy, coverage.py, flake8, pytest, tox, and isort
 
+Notes:
+
+@dan: I think tools like black, mypy, flake8, etc. are not relevant for the muti-platform story
 ---
 
 ## Linux
 
- - Flatpak + AppImage (Dan)
+ - Flatpak + AppImage
  - Flatpak dependency install by building from the Python wheel
  - Separate repository in flathub
  - Differences between flatpak and appimage
  - AppImage requires build on older LIBC, challenges with not being able to use the latest GTK
 
+Notes:
+
+@dan: should this be split in two sheets?
+
 ---
 
 ## Windows
 
- - Msys2 overview (familiar environment, presents challenges) - signing
+ - Msys2 overview (familiar environment, presents challenges)
+ - Signing
  - Cooperate with upstream projects (PyInstaller)
 
 ---
 
 ## macOS
 
- - install script + PyInstaller - Arjan
- - Homebrew overview
- - macOS releases often break packaging - signing
- - library structure (macos libs use absolute references)
+ - Homebrew
+ - Signing
+
+Notes:
+
+* Homebrew started like BSD ports
+* Signing requires an Apple Developer subscription
+
+---
+## macOS packaging
+
+- A `.app` file in a DMG (disk image)
+- Apps have a predefined directory structure
+
+  ```bash
+  Gaphor.app/Contents/Info.plist
+  Gaphor.app/Contents/MacOS/gaphor
+  Gaphor.app/Contents/Resources
+  ```
+
+- Library references are absolute - need relocating
+- Update environment variables
+- Used our own script, now rely in _PyInstaller_
+
+Notes:
+
+- Env vars for shared files (Font config, GI, XDG, GDK-PixBuf)
+- macOS releases often break packaging
+
+py2app is an alternative.
+
+## macOS Signing
+
+- Both app and dmg need signing
+- All performed from buid pipeline
 
 ---
 

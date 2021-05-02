@@ -19,7 +19,7 @@ help: ## This help.
 # DOCKER TASKS
 
 run: ## Run container on port configured in `config.env`
-	docker run --rm --name "$(APP_NAME)" -p $(PORT):$(PORT) -v $(ROOT_DIR)/:/slides webpronl/reveal-md:latest
+	docker run -d --rm --name "$(APP_NAME)" -p $(PORT):$(PORT) -v $(ROOT_DIR)/:/slides webpronl/reveal-md:latest
 
 up: run ## Run container on port configured in `config.env` (Alias to run)
 

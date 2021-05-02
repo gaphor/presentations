@@ -125,10 +125,26 @@ facilitating the creation process and help describe a system in components.
 ---
 # Setup for Success
 
+Notes:
+
+(Dan)
+About 4 years ago, When I started to get involved with Gaphor I was looking for
+an open source modeling tool that I could use to model complex systems. I work
+for Ford Motor Company, and in order to design say a car that can park itself,
+we model how the behavior, structure, and requirements of the feature will work
+safely for our customers.
+
+I stumbled across Gaphor, and I was immediately blown away! It was a nice easy
+to use modeling tool, and it was written in Python which since I'm not a
+professional developer made it more approachable to dive right in.
+Unfortunately, Arjan had been busy with other things in life and the project
+hadn't been updated in 4 years.
+
 ---
 
 ## Painful Upgrades
-- Gaphor use to have some highly customized GTK2 widgets to allow advanced window docking
+- Gaphor use to have some highly customized GTK2 widgets to allow advanced
+  window docking
 - It was clever, but we would have had to rewrite all of it to upgrade GTK
 
 ```python
@@ -148,17 +164,44 @@ class CompactButton(gtk.Widget):
 Notes:
 (Dan)
 
-@dan should we add this?
+10 years ago, Gaphor had a docking widget called etk.docking that created a
+docking experience similar to IDEs like Eclipse have. This allowed you to
+rearrange, hide, maximize and pop out the different UI components. This
+required creating some very custom GUI widgets using GTK 2 and PyGTK. Although
+it was clever, it would have had to have been completely rewritten as we moved
+to GTK3, PyGObject, and Python 3. If you do come across a bug or an issue, it
+is hard to get it fixed because you are exploring the limits of the GUI toolkit
+with some edge case that no one else has likely seen before.
+
+Here is a small example where we defined our own Compact Button. The class
+inherits from a GTK Widget using PyGTK. These double underscore (or dunder)
+definitions are class properties that we defined in order to create our own
+object name, and custom signals and properties that are defined in Python
+Dictionaries.
+
 ---
 
 ## Keep Things Simple
 - Grab a great GUI toolkit
 - Use out of the box widgets and other components
-- Use a few key libraries if needed, ensure dependencies are well supported across platforms
+- Use a few key libraries if needed, ensure dependencies are well supported
+  across platforms
 
 Notes:
 
 (Dan)
+In the docking widget example we just saw, do users really need this much
+customization in their UI components? Keeping things simple, consistent, and
+aligned with the human interface guidelines is the way to go.
+
+GTK and Qt already provide a great foundation to build a GUI application with.
+In the same vane that you don't want to keep your GUI pretty simple, I would
+also try to keep your toolset small and simple as well. Keep to a few other key
+libraries or other dependencies if you can, and make sure that all of them are
+well supported cross-platform.
+
+
+
  - Keep the toolset small (e.g. depend on GTK, but not on a whole lot of other libraries)
  - Avoid dependency hell
  - All dependencies need to be supported on all platforms
@@ -170,24 +213,44 @@ Notes:
 ## Stay True to the Ecosystem
 - Follow the modern best practices for the language you are using
 - These solutions will be tried and true
-- For Python that includes pyproject.toml, black, mypy, coverage.py, flake8, pytest, tox, and isort
+- For Python that includes pyproject.toml and a Python build tool
 
 Notes:
 
-@dan: I think tools like black, mypy, flake8, etc. are not relevant for the muti-platform story
+(Dan)
+This is one nice advantage of Python, batteries are already included and you
+should have most of what you need already to build even very complex
+applications.
+
+There are tools like Cookiecutter that help you fully create a new project from
+scratch using best practices like testing and packaging already setup.
+
+For Gaphor, we use the more modern pyproject.toml to configure our project
+instead of setup.py and we use Poetry for building the project in to a wheel
+and uploading it to the Python Package Index, called PyPI. Other build tools
+like pip-tools and flit are great as well.
+
+In other words, setup your project based on the language you are using, and
+then try to design the GUI that will conform to the GUI toolkit that you are
+using.
+
 ---
 
-## Linux
+## Packaging in Linux with Flatpak
 
- - Flatpak + AppImage
+ - Flatpak
  - Flatpak dependency install by building from the Python wheel
  - Separate repository in flathub
+
+Notes:
+
+---
+
+## AppImage is a Good Option as Well
  - Differences between flatpak and appimage
  - AppImage requires build on older LIBC, challenges with not being able to use the latest GTK
 
 Notes:
-
-@dan: should this be split in two sheets?
 
 ---
 
@@ -196,6 +259,8 @@ Notes:
  - Msys2 overview (familiar environment, presents challenges)
  - Signing
  - Cooperate with upstream projects (PyInstaller)
+
+Notes:
 
 ---
 
@@ -237,6 +302,8 @@ py2app is an alternative.
 - Both app and dmg need signing
 - All performed from buid pipeline
 
+Notes:
+
 ---
 
 ## Take aways
@@ -245,6 +312,8 @@ py2app is an alternative.
 * Work with upstream projects
 * Integrate platform builds in the build pipeline
 
+Notes:
+
 ---
 
 # Questions?
@@ -252,6 +321,8 @@ py2app is an alternative.
 Dan: @danyeaw / dan@yeaw.me
 
 Arjan: @ajmolenaar / gaphor@gmail.com
+
+Notes:
 
 ---
 

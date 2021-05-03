@@ -216,7 +216,7 @@ Here we can see the dependencies of Gaphor:
   top of pycairo to draw shapes and relationships between the shapes, and
   generic provides multi dispatch to dynamically dispatch a function or method
   based on its type.
-- Finally we use tinycss2 for CSS support for theming of the app
+- Finally we use tinycss2 for CSS support for theming of the diagrams
 
 ---
 
@@ -293,7 +293,7 @@ setup to work with our Python dependencies. Flatpak uses a manifest or recipe
 in json or yaml format. Among other things, the manifest contains all of the
 dependencies including the download location and a hash in the sha256 format.
 This helps ensure that the flatpak build is reproducible, so that you get the
-same result 
+same result
 
 Although there is a flatpak builder tool for Python, it uses pip to re-resolve
 all of the project dependencies, and it defaults to using source distributions
@@ -323,7 +323,7 @@ complexity because now your packaging is split between two repos.
  - Another great format for distributing apps
  - Also universal and sandboxed with a single file executable
  - Challenges for app developers to use the latest GUI toolkits while
-   maintaining compatibility for users 
+   maintaining compatibility for users
 
 Notes:
 
@@ -374,7 +374,7 @@ However, this wasn't all smooth sailing. Python in MSYS2 has close to 100
 different patches to get it to compile against Mingw-w64 GCC instead of the
 normal Microsoft Visual C++ that Python is normally compiled against in
 Windows. Since MSYS2 is a niche environment, Python and most of the libraries
-aren't tested against it, and it is common for things to break. 
+aren't tested against it, and it is common for things to break.
 
 We were able to get pull requests merged with upstream projects like
 virtualenv, PyInstaller, and poetry to fix bugs and improve compatibility.
@@ -409,7 +409,7 @@ Notes:
 ---
 ## macOS packaging
 
-- A `.app` file in a DMG (disk image)
+- A `.app` file in a DMG (disk image, think ISO)
 - Apps have a predefined directory structure
   <img src="/images/app-directory-structure-bash.svg" height=200>
 - Library references are absolute - need relocating
@@ -419,15 +419,19 @@ Notes:
 Notes:
 
 (Arjan)
-Env vars for shared files (Font config, GI, XDG, GDK-PixBuf)
-macOS releases often break packaging
+
+- macOS does not have a dynamic loader like Linux
+- Env vars for shared files (Font config, GI, XDG, GDK-PixBuf)
+- macOS releases often break packaging
 
 py2app is an alternative.
+
+---
 
 ## macOS Signing
 
 - Both app and dmg need signing
-- All performed from buid pipeline
+- All performed from build pipeline
 
 Notes:
 
@@ -440,6 +444,8 @@ Notes:
 * Approach each platform separately
 * Work with upstream projects
 * Integrate platform builds in the build pipeline
+
+<img src="images/artifacts.png">
 
 Notes:
 

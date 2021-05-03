@@ -143,23 +143,10 @@ hadn't been updated in 4 years.
 ---
 
 ## Painful Upgrades
-- Gaphor use to have some highly customized GTK2 widgets to allow advanced
-  window docking
-- It was clever, but we would have had to rewrite all of it to upgrade GTK
+- Highly customized widgets can be a nightmare
+- Try to make out of the box solutions work
 
-```python
-class CompactButton(gtk.Widget):
-    __gtype_name__ = 'EtkCompactButton'
-    __gsignals__ = {'clicked':
-                        (gobject.SIGNAL_RUN_FIRST | gobject.SIGNAL_ACTION,
-                         gobject.TYPE_NONE,
-                         tuple())}
-    __gproperties__ = {'icon-name-normal':
-                           (gobject.TYPE_STRING,
-                            'icon name normal',
-                            'icon name normal',
-                            '',
-```
+<img src="/images/etk-compactbutton-python.svg" height=500>
 
 Notes:
 (Dan)
@@ -187,15 +174,7 @@ Dictionaries.
 - Use a few key libraries if needed, ensure dependencies are well supported
   across platforms
 
-```
-[tool.poetry.dependencies]
-python = "^3.7"
-PyGObject = "^3.30"
-pycairo = "^1.18"
-gaphas = "^3.1.0"
-generic = "^1.0.0"
-tinycss2 = "^1.0.2"
-```
+<img src="/images/dependencies-toml.svg" height=300>
 
 Notes:
 
@@ -224,7 +203,7 @@ Here we can see the dependencies of Gaphor:
 ## Stay True to the Ecosystem
 - Follow the modern best practices for the language you are using
 - These solutions will be tried and true
-- For Python that includes pyproject.toml and a Python build tool
+- For Python: pyproject.toml and a Python build tool
 
 Notes:
 
@@ -278,18 +257,12 @@ package your app on top of with all of the dependencies included.
 
 ---
 
- - Make builds reproducible by building from Python wheels with a lock file
- - Separate repository in flathub
+## Building Flatpaks
 
-```bash
-pip3 download --dest ${BUILD}  gaphor==${GAPHOR_VERSION}
-ls ${BUILD} | awk -F- '{ print $1 " " $0 }' | \
-while read DEP FILE
-do
-  curl -sSfL https://pypi.org/pypi/${DEP}/json | \
-  jq -r '.releases[][] | select(.filename == "'${FILE}'") | \
-  "\(.digests.sha256) \(.url)"'
-```
+ - Make builds reproducible by building from Python wheels
+ - Uses a separate repository in flathub
+
+<img src="/images/depends-bash.svg">
 
 Notes:
 
@@ -318,10 +291,14 @@ use curl and jq to connect to the PyPI endpoint and process the json to get the
 filename and sha256. Although bash scripts are the solution to everything, in
 this case it made our manifest generation simple and reliable.
 
+A second challenge is that flathub uses a separate GitHub repository to build
+all of the packages. While it is great that everything is setup to do the
+automated builds and publish to flathub, it also adds some maintenance
+complexity because now your packaging is split between two repos.
 
 ---
 
-## AppImage is a Good Option as Well
+## AppImage is Another Good Option
  - Differences between flatpak and appimage
  - AppImage requires build on older LIBC, challenges with not being able to use the latest GTK
 

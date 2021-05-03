@@ -187,6 +187,16 @@ Dictionaries.
 - Use a few key libraries if needed, ensure dependencies are well supported
   across platforms
 
+```
+[tool.poetry.dependencies]
+python = "^3.7"
+PyGObject = "^3.30"
+pycairo = "^1.18"
+gaphas = "^3.1.0"
+generic = "^1.0.0"
+tinycss2 = "^1.0.2"
+```
+
 Notes:
 
 (Dan)
@@ -200,13 +210,14 @@ also try to keep your toolset small and simple as well. Keep to a few other key
 libraries or other dependencies if you can, and make sure that all of them are
 well supported cross-platform.
 
-
-
- - Keep the toolset small (e.g. depend on GTK, but not on a whole lot of other libraries)
- - Avoid dependency hell
- - All dependencies need to be supported on all platforms
- - Use GTK out of the box as possible (avoid issues with GTK upgrades)
- - Keep true to the ecosystem (for Python, use pyproject.toml + a python build tool)
+Here we can see the dependencies of Gaphor:
+- Python itself
+- PyGObject which provides GTK and pycairo which provides canvas drawing
+- gaphas and generic are our own libraries, gaphas is a diagramming library on
+  top of pycairo to draw shapes and relationships between the shapes, and
+  generic provides multi dispatch to dynamically dispatch a function or method
+  based on its type.
+- Finally we use tinycss2 for CSS support for theming of the app
 
 ---
 
@@ -231,18 +242,82 @@ and uploading it to the Python Package Index, called PyPI. Other build tools
 like pip-tools and flit are great as well.
 
 In other words, setup your project based on the language you are using, and
-then try to design the GUI that will conform to the GUI toolkit that you are
-using.
+then try to design the GUI that will conform to the GUI toolkit's interface
+guidelines.
+
+---
+
+# Packaging
+
+Notes:
+
+(Dan)
+Packaging your app so that it can be easily installed and run on each platform
+is a very challenging problem. Each platform needs its own solution and next
+we'll talk about some tips to be successful.
 
 ---
 
 ## Packaging in Linux with Flatpak
 
- - Flatpak
- - Flatpak dependency install by building from the Python wheel
- - Separate repository in flathub
+ - Flatpak is 😎
+ - Provides universal and sanboxed distribution for Linux
+ - For app developers, runtimes are a strong foundation to build on
 
 Notes:
+
+(Dan)
+Flatpak and the distribution platform for them called flathub provides a great
+way to distribute your app across Linux distributions. The format is great in
+that it sandboxes the application, can be installed by non-root users, and it
+is also has good desktop integration.
+
+One of the killer features for an application developer is that it includes
+maintained platforms called runtimes. These provide a strong foundation to
+package your app on top of with all of the dependencies included.
+
+---
+
+ - Make builds reproducible by building from Python wheels with a lock file
+ - Separate repository in flathub
+
+```bash
+pip3 download --dest ${BUILD}  gaphor==${GAPHOR_VERSION}
+ls ${BUILD} | awk -F- '{ print $1 " " $0 }' | \
+while read DEP FILE
+do
+  curl -sSfL https://pypi.org/pypi/${DEP}/json | \
+  jq -r '.releases[][] | select(.filename == "'${FILE}'") | \
+  "\(.digests.sha256) \(.url)"'
+```
+
+Notes:
+
+(Dan)
+One of the challenges we faced with flatpak was getting a reliable build script
+setup to work with our Python dependencies. Flatpak uses a manifest or recipe
+in json or yaml format. Among other things, the manifest contains all of the
+dependencies including the download location and a hash in the sha256 format.
+This helps ensure that the flatpak build is reproducible, so that you get the
+same result 
+
+Although there is a flatpak builder tool for Python, it uses pip to re-resolve
+all of the project dependencies, and it defaults to using source distributions
+instead of using Python's wheel binary package format. We tried to use this for
+a while, and even created and upstreamed a poetry builder tool, but everytime
+we went to release a new version, something would break and we would have to
+spend time troubleshooting. This is not what you want for your release process!
+You want it to be simple, reliable, and automated.
+
+To fix this, we ended up using a simple bash script to download the wheel of
+the new version from PyPI with all of its dependencies, and then write the
+download url and the sha256 to the manifest. Here you can see we use pip to
+download the new version, ls and awk to get the list of files in two columns
+using the dash as a separator to get the dependency name and filename. Then we
+use curl and jq to connect to the PyPI endpoint and process the json to get the
+filename and sha256. Although bash scripts are the solution to everything, in
+this case it made our manifest generation simple and reliable.
+
 
 ---
 

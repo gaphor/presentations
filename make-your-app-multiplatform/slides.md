@@ -86,8 +86,8 @@ We want the apps we build to be useful for others!
 ## Why go multi-platform
 
 1. Broader & more inclusive user base
-1. Helps introduce people to Open Source
-1. More future proof
+1. Helps introduce people to Open Source 🤝
+1. More future proof 🔮
 1. Improves adaptability - not bound to a specific OS
 
 
@@ -100,8 +100,8 @@ Most issues have been raised by Windows users.
 ## What are we targeting
 
 * All major desktop platforms: Windows, macOS, Linux
-* Automate as much as possible
-* No scary warnings during install
+* Automate as much as possible 🤖
+* No scary warnings during install ⚠
 
 <img src="images/windows_logo.png" height=90><img src="images/apple_logo.png" height=100><img src="images/linux_logo.svg" height=110>
 

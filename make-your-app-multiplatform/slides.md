@@ -32,7 +32,7 @@ with Arjan on Gaphor.
 
 1. Why go multi-platform
 1. The case: Gaphor
-1. Building for Linux - Flatpak + AppImage
+1. Building for Linux (Flatpak / AppImage)
 1. Building for Windows
 1. Building for macOS
 1. Take aways
@@ -74,8 +74,8 @@ Notes:
 
 We want the apps we build to be useful for others!
 
-- Users who get value out of using our app
-- Diverse contributors who want to help make it better
+- Users who get value out of using our app 👥
+- Diverse contributors who want to help make it better 🔨
 
 ---
 
@@ -298,21 +298,79 @@ complexity because now your packaging is split between two repos.
 
 ---
 
-## AppImage is Another Good Option
- - Differences between flatpak and appimage
- - AppImage requires build on older LIBC, challenges with not being able to use the latest GTK
+## AppImage: One app = one file
+ - Another great format for distributing apps
+ - Also universal and sandboxed with a single file executable
+ - Challenges for app developers to use the latest GUI toolkits while
+   maintaining compatibility for users 
 
 Notes:
+
+(Dan)
+After we had been supporting flatpak for a while, we got a request from one
+of our users to support AppImage packages as well. I was familiar with this
+format as a user, they are really nice to be able to download a single file
+and then run it with no installation required. We agreed that this would be
+nice alternative to support.
+
+One thing I learned while packaging our app for AppImage was that because
+there was no external dependencies, that also means for the developer you
+can't rely on a runtime being available. This creates some tension, because
+I would like my app to be using the latest version of Python, GUI toolkit,
+and other dependencies - this is open source, I want to develop on the latest
+and greatest because that keeps things more fun and modern, as well as
+more secure.
+
+Unfortunately, things like glibc aren't backwards compatible, so you should
+really build your app on an older distribution to maximize compatibility.  For
+example, the oldest supported version of Cent OS or Ubuntu LTS are commonly
+used at this time to build AppImages, but they ship with GTK versions that are
+3 to 5 years out of date. There are tools to help with this or you can spin up
+your own docker container with the right dependencies. This isn't
+straightforward so right now our AppImages only work on the latest LTS version
+or newer. Maybe one day we'll make Gaphor's AppImages more compatible.
 
 ---
 
 ## Windows
 
- - Msys2 overview (familiar environment, presents challenges)
- - Signing
- - Cooperate with upstream projects (PyInstaller)
+ - MSYS2 provides a familiar environment, but also some challenges
+ - Cooperate with upstream projects to help improve things
+ - Code signing
+
+<img src="/images/code-signing.svg">
 
 Notes:
+
+(Dan)
+MSYS2 provides an environment for building, installing, and running
+applications in Windows. The bash command prompt also feels right at home if
+you are comfortable with Linux. It also is the recommended way to run a GTK app
+in Windows. Once we got Gaphor running in Windows, we used PyInstaller to
+bundle it with all the needed dependencies.
+
+However, this wasn't all smooth sailing. Python in MSYS2 has close to 100
+different patches to get it to compile against Mingw-w64 GCC instead of the
+normal Microsoft Visual C++ that Python is normally compiled against in
+Windows. Since MSYS2 is a niche environment, Python and most of the libraries
+aren't tested against it, and it is common for things to break. 
+
+We were able to get pull requests merged with upstream projects like
+virtualenv, PyInstaller, and poetry to fix bugs and improve compatibility.
+Although this yak shaving isn't directly making our app better, it does improve
+the overall ecosystem for others to use. I am hoping we can eventually help get
+some of the patches to Python itself pushed uptream as well.
+
+After feedback from our users, we did also implement code signing in Windows to
+help reduce the scary warning messages that appear when you go to install an
+app downloaded from the internet. This does involve paying a couple hundred
+dollars a year on a code signing certificate and was a foreign experience for
+us, but it was pretty easy to integrate in to our Continuous Integration build
+process.
+
+Here you can see the signtool app that comes with the Windows SDK signs the
+application using the certificate, a timestamp server, the file and timestamp
+digest algorithms are used with sha256.
 
 ---
 
@@ -331,21 +389,16 @@ Notes:
 
 - A `.app` file in a DMG (disk image)
 - Apps have a predefined directory structure
-
-  ```bash
-  Gaphor.app/Contents/Info.plist
-  Gaphor.app/Contents/MacOS/gaphor
-  Gaphor.app/Contents/Resources
-  ```
-
+  <img src="/images/app-directory-structure-bash.svg" height=200>
 - Library references are absolute - need relocating
 - Update environment variables
-- Used our own script, now rely in _PyInstaller_
+- Used our own script, now rely on _PyInstaller_
 
 Notes:
 
-- Env vars for shared files (Font config, GI, XDG, GDK-PixBuf)
-- macOS releases often break packaging
+(Arjan)
+Env vars for shared files (Font config, GI, XDG, GDK-PixBuf)
+macOS releases often break packaging
 
 py2app is an alternative.
 
@@ -382,16 +435,9 @@ Notes:
 
 Things we may or not may want to discuss in this talk.
 
-1. Keep the toolset small (e.g. depend on GTK, but not on a whole lot of other libraries)
-    - Avoid dependency hell
-    - All dependencies need to be supported on all platforms
-    - Use GTK out of the box as possible (avoid issues with GTK upgrades)
-2. Keep true to the ecosystem (for Python, use pyproject.toml + a python build tool)
-3. Work with upstream projects (in our case PyInstaller)
-4. Build your CI around those platforms (GitHub is your friend here)
+1. Build your CI around those platforms (GitHub is your friend here)
     - Check your packaged builds continuously
-5. Costs for registering (windows) and notarizing (macos) your app vs benefits
-6. Looking forward to the future
+1. Costs for registering (windows) and notarizing (macos) your app vs benefits
+1. Looking forward to the future
     - GTK4
-
-- war stories
+1. war stories

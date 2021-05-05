@@ -44,32 +44,6 @@ Notes:
 * Who build software in their spare time?
 * Desktop software?
 
-1. Why go multi-platform (Arjan)
-   - Community size is larger (platform user base and developer user base sizes)
-1. What are we targetting (os, installation method, user type, automated) Arjan
-   - Automatic as much as possible
-   - No scary warnings during install
-1. The case: Gaphor (Arjan)
-1. Before you begin
-   - Keep the toolset small (e.g. depend on GTK, but not on a whole lot of other libraries)
-   - Avoid dependency hell
-   - All dependencies need to be supported on all platforms
-   - Use GTK out of the box as possible (avoid issues with GTK upgrades)
-   - Keep true to the ecosystem (for Python, use pyproject.toml + a python build tool)
-1. Building for Linux - Flatpak + AppImage (Dan)
-   - Flatpak dependency install by building from the Python wheel
-   - Separate repository in flathub
-   - Differences between flatpak and appimage
-   - AppImage requires build on older LIBC, challenges with not being able to use the latest GTK
-1. Building for Windows (maybe switch order?) - Dan
-   - Msys2 overview (familiar environment, presents challenges) - signing
-   - Cooperate with upstream projects (PyInstaller)
-1. Building for macOS - install script + PyInstaller - Arjan
-   - Homebrew overview
-   - macOS releases often break packaging - signing
-   - library structure (macos libs use absolute references)
-1. Take aways: Approach each platform separately. work with upstream projects. Consolidate
-
 ---
 
 ## A Vibrant Community
@@ -90,6 +64,13 @@ Notes:
 Notes:
 
 (Arjan)
+
+If we would focus only on Linux (GNOME) we would target a small user base.
+
+So how big could the effort be to publish the app on all platforms?
+There are projects that have done this before us: Inkscape, The GIMP.
+But our project is mainly written in Python. How many Python/GTK based
+applications are available for all major desktop platforms?
 
 ---
 
@@ -114,7 +95,7 @@ Most issues have been raised by Windows users.
 * Automate as much as possible 🤖
 * No scary warnings during install ⚠
 
-<img src="images/windows_logo.png" height=90><img src="images/apple_logo.png" height=100><img src="images/linux_logo.svg" height=110>
+<img src="images/windows_logo.png" height=90> <img src="images/apple_logo.png" height=100> <img src="images/linux_logo.svg" height=110>
 
 Notes:
 
@@ -129,7 +110,7 @@ Notes:
 
 Notes:
 
-@Arjan: OK, if we share this slide?
+(Arjan, handover to Dan)
 
 (Arjan)
 * A modeling tool, written in Python (~ 44000 lines)
@@ -437,6 +418,9 @@ Notes:
 
 (Arjan)
 
+Signing is a hassle and requires an Apple Developer subscription.
+
+
 ---
 
 ## Take aways
@@ -450,6 +434,14 @@ Notes:
 Notes:
 
 (Arjan)
+
+Packaging a Python app for win/mac/linux in itself is not that hard.
+What makes it hard is the extra libraries you need to package (in our case GTK)
+Esp. if modules are dynamically loaded.
+
+Help upstream project to fix packaging (PyInstaller) and fix platform specific bugs.
+
+Integrate everything in a build pipeline and strive for development versions each build.
 
 ---
 

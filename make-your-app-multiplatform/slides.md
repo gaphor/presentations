@@ -24,7 +24,7 @@ Hi my name is Dan Yeaw. I work for Ford Motor Company in Michigan where I help
 design safety in to complex software-based automated and electrified
 technologies. In my free time, I have been working on an open source tool used
 to model these complex system designs. That's how I got involved in contributing
-with Arjan on Gaphor.
+with Arjan on Gaphor. I also like to ride bicycles!
 
 ---
 
@@ -38,6 +38,8 @@ with Arjan on Gaphor.
 1. Take aways
 
 Notes:
+
+@Arjan: I think we can remove this talk summary now, what do you think?
 
 * Who build software in their spare time?
 * Desktop software?
@@ -74,12 +76,20 @@ Notes:
 
 We want the apps we build to be useful for others!
 
-- Users who get value out of using our app 👥
-- Diverse contributors who want to help make it better 🔨
+- Users who get value out of using them 👥
+- Diverse contributors who want to make them better 🔨
+
+Notes:
+
+(Arjan)
 
 ---
 
 <!-- .slide: data-background="images/os_market_share.svg"  -->
+
+Notes:
+
+(Arjan)
 
 ---
 
@@ -93,6 +103,7 @@ We want the apps we build to be useful for others!
 
 Notes:
 
+(Arjan)
 Most issues have been raised by Windows users.
 
 ---
@@ -106,6 +117,8 @@ Most issues have been raised by Windows users.
 <img src="images/windows_logo.png" height=90><img src="images/apple_logo.png" height=100><img src="images/linux_logo.svg" height=110>
 
 Notes:
+
+(Arjan)
 - automate -> build all in CI
 
 ---
@@ -116,16 +129,13 @@ Notes:
 
 Notes:
 
+@Arjan: OK, if we share this slide?
+
 (Arjan)
 * A modeling tool, written in Python (~ 44000 lines)
 * GTK+ 3 (soon GTK 4)
 * Why did I start this project almost 20 years ago: modeling should be
 facilitating the creation process and help describe a system in components.
-
----
-# Setup for Success
-
-Notes:
 
 (Dan)
 About 4 years ago, When I started to get involved with Gaphor I was looking for
@@ -141,24 +151,34 @@ Unfortunately, Arjan had been busy with other things in life and the project
 hadn't been updated in 4 years.
 
 ---
+# Setup for Success
+
+Notes:
+
+(Dan)
+Next we are going to discuss how you can setup your project for success, with
+tips we learned the hard way.
+
+---
 
 ## Painful Upgrades
 - Highly customized widgets can be a nightmare
-- Try to make out of the box solutions work
+- Instead try to use out of the box solutions
 
 <img src="/images/etk-compactbutton-python.svg" height=500>
 
 Notes:
 (Dan)
 
-10 years ago, Gaphor had a docking widget called etk.docking that created a
-docking experience similar to IDEs like Eclipse have. This allowed you to
-rearrange, hide, maximize and pop out the different UI components. This
-required creating some very custom GUI widgets using GTK 2 and PyGTK. Although
-it was clever, it would have had to have been completely rewritten as we moved
-to GTK3, PyGObject, and Python 3. If you do come across a bug or an issue, it
-is hard to get it fixed because you are exploring the limits of the GUI toolkit
-with some edge case that no one else has likely seen before.
+When I first picked up the app, Gaphor had a docking widget called etk.docking
+that created a docking experience similar to IDEs like Eclipse have. This
+allowed you to rearrange, hide, maximize and pop out the different UI
+components. This required creating some very custom GUI widgets using GTK 2 and
+PyGTK. Although it was clever, it would have had to have been completely
+rewritten as we moved to GTK3, PyGObject, and Python 3. If you do come across a
+bug or an issue, it is hard to get it fixed because you are exploring the
+limits of the GUI toolkit with some edge case that no one else has likely seen
+before.
 
 Here is a small example where we defined our own Compact Button. The class
 inherits from a GTK Widget using PyGTK. These double underscore (or dunder)
@@ -202,6 +222,7 @@ Here we can see the dependencies of Gaphor:
 
 ## Stay True to the Ecosystem
 - Follow the modern best practices for the language you are using
+- Use Cookiecutter to get started quickly
 - These solutions will be tried and true
 - For Python: pyproject.toml and a Python build tool
 
@@ -381,6 +402,7 @@ digest algorithms are used with sha256.
 
 Notes:
 
+(Arjan)
 * Homebrew started like BSD ports
 * Signing requires an Apple Developer subscription
 
@@ -409,6 +431,8 @@ py2app is an alternative.
 
 Notes:
 
+(Arjan)
+
 ---
 
 ## Take aways
@@ -418,6 +442,8 @@ Notes:
 * Integrate platform builds in the build pipeline
 
 Notes:
+
+(Arjan)
 
 ---
 

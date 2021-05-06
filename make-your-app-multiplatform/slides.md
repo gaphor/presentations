@@ -242,7 +242,7 @@ we'll talk about some tips to be successful.
 ## Packaging in Linux with Flatpak
 
  - Flatpak is 😎
- - Provides universal and sanboxed distribution for Linux
+ - Provides universal and sandboxed distribution for Linux
  - For app developers, runtimes are a strong foundation to build on
 
 Notes:
@@ -287,10 +287,10 @@ You want it to be simple, reliable, and automated.
 To fix this, we ended up using a simple bash script to download the wheel of
 the new version from PyPI with all of its dependencies, and then write the
 download url and the sha256 to the manifest. Here you can see we use pip to
-download the new version, ls and awk to get the list of files in two columns
+download the new version, find and awk to get the list of files in two columns
 using the dash as a separator to get the dependency name and filename. Then we
 use curl and jq to connect to the PyPI endpoint and process the json to get the
-filename and sha256. Although bash scripts are the solution to everything, in
+filename and sha256. Although bash scripts aren't the solution to everything, in
 this case it made our manifest generation simple and reliable.
 
 A second challenge is that flathub uses a separate GitHub repository to build

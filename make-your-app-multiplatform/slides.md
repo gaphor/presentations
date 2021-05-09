@@ -173,8 +173,8 @@ Dictionaries.
 ## Keep Things Simple
 - Grab a great GUI toolkit
 - Use out of the box widgets and other components
-- Use a few key libraries if needed, ensure dependencies are well supported
-  across platforms
+- Use a few key libraries if needed
+- Ensure dependencies are cross-platform
 
 <img src="/images/dependencies-toml.svg" height=300>
 

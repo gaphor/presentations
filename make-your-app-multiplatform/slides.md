@@ -106,7 +106,7 @@ Notes:
 
 ## The case: Gaphor
 
-<img src="images/gaphor.png">
+<img src="images/gaphor-and-deps.png">
 
 Notes:
 
@@ -114,6 +114,7 @@ Notes:
 
 (Arjan)
 * A modeling tool, written in Python (~ 44000 lines)
+* Supports UML, SysML, RAAML (risk assessment), and C4 model
 * GTK+ 3 (soon GTK 4)
 * Why did I start this project almost 20 years ago: modeling should be
 facilitating the creation process and help describe a system in components.

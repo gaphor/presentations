@@ -453,16 +453,3 @@ Dan: @danyeaw / dan@yeaw.me
 Arjan: @ajmolenaar / gaphor@gmail.com
 
 Notes:
-
----
-
-## Random thoughts
-
-Things we may or not may want to discuss in this talk.
-
-1. Build your CI around those platforms (GitHub is your friend here)
-    - Check your packaged builds continuously
-1. Costs for registering (windows) and notarizing (macos) your app vs benefits
-1. Looking forward to the future
-    - GTK4
-1. war stories

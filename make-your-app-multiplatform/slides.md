@@ -147,7 +147,7 @@ tips we learned the hard way.
 - Highly customized widgets can be a nightmare
 - Instead try to use out of the box solutions
 
-<img src="/images/etk-compactbutton-python.svg" height=500>
+<img src="/images/etk-compactbutton-python.svg" height=400>
 
 Notes:
 (Dan)

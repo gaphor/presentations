@@ -39,8 +39,6 @@ with Arjan on Gaphor. I also like to ride bicycles!
 
 Notes:
 
-@Arjan: I think we can remove this talk summary now, what do you think?
-
 * Who build software in their spare time?
 * Desktop software?
 
@@ -186,7 +184,7 @@ customization in their UI components? Keeping things simple, consistent, and
 aligned with the human interface guidelines is the way to go.
 
 GTK and Qt already provide a great foundation to build a GUI application with.
-In the same vane that you don't want to keep your GUI pretty simple, I would
+In the same vane that you want to keep your GUI pretty simple, I would
 also try to keep your toolset small and simple as well. Keep to a few other key
 libraries or other dependencies if you can, and make sure that all of them are
 well supported cross-platform.
@@ -249,6 +247,10 @@ we'll talk about some tips to be successful.
 Notes:
 
 (Dan)
+The previous solutions for Linux included packaging for each distribution with
+deb and rpm, but it made it difficult for app developers to get the latest version
+of their app out to their users.
+
 Flatpak and the distribution platform for them called flathub provides a great
 way to distribute your app across Linux distributions. The format is great in
 that it sandboxes the application, can be installed by non-root users, and it
@@ -325,13 +327,10 @@ and greatest because that keeps things more fun and modern, as well as
 more secure.
 
 Unfortunately, things like glibc aren't backwards compatible, so you should
-really build your app on an older distribution to maximize compatibility.  For
-example, the oldest supported version of Cent OS or Ubuntu LTS are commonly
-used at this time to build AppImages, but they ship with GTK versions that are
-3 to 5 years out of date. There are tools to help with this or you can spin up
-your own docker container with the right dependencies. This isn't
-straightforward so right now our AppImages only work on the latest LTS version
-or newer. Maybe one day we'll make Gaphor's AppImages more compatible.
+really build your app on an older distribution to maximize compatibility.
+There are tools to help with this or you can spin up your own docker container
+with the right dependencies. However, we didn't find this to be very
+straightforward.
 
 ---
 

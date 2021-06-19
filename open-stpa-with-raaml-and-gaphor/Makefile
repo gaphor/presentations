@@ -23,5 +23,8 @@ run: ## Run container on port configured in `config.env`
 
 up: run ## Run container on port configured in `config.env` (Alias to run)
 
+print:
+	docker run --rm -t --net=host -v $(ROOT_DIR):/slides astefanutti/decktape $(URL) $(OUTPUT_FILENAME)
+
 stop: ## Stop and remove a running container
 	docker stop $(APP_NAME); docker rm $(APP_NAME)

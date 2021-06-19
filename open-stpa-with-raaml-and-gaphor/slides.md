@@ -19,13 +19,15 @@ Dan Yeaw &amp; Kyle Post
 
 Notes:
 
-Hi my name is Dan Yeaw. I work for Ford Motor Company in Michigan where I help
-design safety in to complex software-based automated and electrified
-technologies. In my free time, I have been working on an open source tool used
-to model these complex system designs. That's how I got involved in contributing
-with Gaphor. I also like to ride bicycles!
+Hi my name is Dan Yeaw. I work for Ford Motor Company where I am a Manager and
+Technical Lead for Functional Safety in Product Development.  In my free time,
+I have been working on an open source tool used to model these complex system
+designs. That's how I got involved in contributing with Gaphor. I also like to
+ride bicycles!
 
-Hi I'm Kyle Post 
+Hi I'm Kyle Post. I also work for Ford and I'm the Technical Leader for Systems
+Safety in the Research and Advanced Engineering area. I have been leading the
+Risk Analysis and Assessment Modeling Language (RAAML) OMG standard.
 
 ---
 
@@ -45,25 +47,28 @@ Notes:
 
 - Each industry has developed domain specific standards, most derived fom IEC 61508
 - New techniques, like STPA, can improve how we do safety analysis
-- Fundamentally lack rigor without a standardized language and automation.
+- However, may lack rigor without a standardized and consistent language and automation
 
 ---
 
 ## RAAML
 
-- The Risk Analysis and Assessment Modeling Language standardizes a language for systems safety
-- OMG beta standard, final release later this year
-- A rigorous and standardized language allows us to describe system safety designs with precision
-- Includes support for STPA based on the STPA Handbook
+- Precise language for systems safety
+- OMG spec 1.0 beta available, final release soon 
+- STPA metamodel library based on the STPA Handbook
+- Facilitates exchange of info between tools and organizations
+
+Notes:
+
+The Risk Analysis and Assessment Language
 
 ---
 
 ## Gaphor
 
-- An open source modeling tool written in Python
-- 20+ years old, recently modernized with support for SysML and RAAML added
+- An open source UML, SysML, and now RAAML modeling tool written in Python
 - Fast and easy to use, while still having a full data model
-- Improves rigor through automation, highly repeatable, adheres to standards
+- Improves rigor through consistency, helps add automation
 
 ---
 
@@ -76,6 +81,3 @@ For more information see:
 https://omg.org/spec/RAAML
 
 https://gaphor.org
-
-@danyeaw
-

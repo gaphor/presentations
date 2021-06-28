@@ -20,20 +20,75 @@ contributor to a modeling tool called Gaphor.
 
 ---
 
-- describe qualities of used pattern
-- application example
+# What are we looking for
+
+- Modular
+- Easy to work on
+- Extensible code base
+
+Notes:
+
+What are we looking for in a large code base:
+
+1. modularity: this allows you to work on one part of the application without knowledge of other parts.
+2. Extensibility follows from modularity. Once a code base is modular, it should be easy to add new functionality
+3. Easy to work with. Python is a dynamically typed language. Since the code base gets larger, and we want to
+   be extensible, we need to do some extra work to help with coding.
+
+---
+# The case: Gaphor
+
+<img src="gaphor-and-deps.png" alt="gaphor" height=500>
+
+Notes:
+
+The application I've been working on is Gaphor. It's a modeling tool, so you can draw diagrams and create models
+in UML, SysML, or simply in the C4 modeling language.
+
+Something history...
+
+---
+# GTK 101
+
+- GTK is a GUI toolkit
+- central is `GObject`
+   - add OO support to C
+   - supports signal handlers
+
+Notes:
+
+This application is built with GTK. GTK is a cross platform GUI toolkit.
+
+In GTK all widgets are based on GObject. Although GTK is written in C, GObject provides support for
+classes and interfaces.
+
+GObject also provides signals handling, so you can register a handler on an event that will happen from
+GObject and handle it. For example a button press.
+
+---
+
+Large python: typing
+
+- Python is a dynamically typed language
+- Add type annotation to avoid mistakes
+
+```python
+def function my_func(arg: str, other: SomeType):
+   ...
+```
 
 ---
 
 # Pure Python core
 
-- Clean Architecture
+- "Hexagonal" architecture
 - testable code base
 - separation between application core and functionality
 
 ---
 
-!image hex-arch
+## Pure Python core
+<img src="hexagonal-arch.svg" height=500>
 ---
 
 # Composition over inheritance
@@ -44,20 +99,52 @@ contributor to a modeling tool called Gaphor.
 
 ---
 
-Example:
+## Composition over inheritance
 
-one of the UI components
+Don't:
 
 ```python
-class Diagrams(UIComponent):
+class AppWindow(Gtk.ApplicationWindow):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+
+        self.label = Gtk.Label(label=lbl_variant.get_string(), margin=30)
+        self.add(self.label)
+        self.label.show()
+
+    def on_change_label_state(self, action, value):
+        ...
+
+    def on_maximize_toggle(self, action, value):
+        ...
+```
+
+---
+
+## Composition over inheritance
+
+Do:
+
+```python
+class AppWindow:
 
     def construct(self):
-        ... construct widgets, set callbacks
+        self.window = Gtk.Application()
+
+        self.label = Gtk.Label(label=lbl_variant.get_string(), margin=30)
+        self.window.add(self.label)
+        self.label.show()
+
+    def on_change_label_state(self, action, value):
+        ...
+
+    def on_maximize_toggle(self, action, value):
+        ...
 
 ```
 ---
 
-# Extensibility
+# Modularity
 
 - Services
 - generic functions / dynamic dispatch
@@ -74,8 +161,8 @@ Defined in `pyproject.toml`:
 [tool.poetry.plugins."gaphor.services"]
 "component_registry" = "gaphor.services.componentregistry:ComponentRegistry"
 "event_manager" = "gaphor.core.eventmanager:EventManager"
-"undo_manager" = "gaphor.services.undomanager:UndoManager"
 "element_factory" = "gaphor.core.modeling:ElementFactory"
+"undo_manager" = "gaphor.services.undomanager:UndoManager"
 "modeling_language" = "gaphor.services.modelinglanguage:ModelingLanguageService"
 "file_manager" = "gaphor.ui.filemanager:FileManager"
 ```
@@ -101,11 +188,18 @@ def _copy_named_element(element: NamedElement):
 
 # Event dispatching
 
-- object or application wide
-- app wide -> event bus
-- model is emiting events, everything should be able to listen
-- listen on an event type
+- Decouples components
+- Central event dispatcher service
+- Model is emiting events, everything should be able to listen
+- Listen on an event type
+  - Event hierarchy
 
 ---
 
 !image event dispatching
+
+---
+
+# Take away
+
+What are the take aways?

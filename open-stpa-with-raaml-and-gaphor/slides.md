@@ -37,7 +37,7 @@ We want to build an open community for systems safety
 
 - A low barrier to join, learn, and grow 👥
 - Diverse contributors who want to help 🔨
-- We are building this community on open standards and open source software
+- Built on open standards and open source software
 
 Notes:
 
@@ -73,6 +73,26 @@ The Risk Analysis and Assessment Language
 ---
 
 # Demo
+
+---
+
+Step 1: Define Purpose of the Analysis
+<img src="images/losses-hazards.png" height=400>
+
+---
+
+Step 2: Model the Control Structure
+<img src="images/control-structure.png" height=500>
+
+---
+
+Step 3: Identify Unsafe Control Actions
+<img src="images/unsafe-control-actions.png">
+
+---
+
+Step 4: Identify Loss Scenarios
+<img src="images/loss-scenarios.png">
 
 ---
 

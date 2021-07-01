@@ -1,0 +1,323 @@
+<?xml version="1.0" encoding="utf-8"?>
+<gaphor xmlns="http://gaphor.sourceforge.net/model" version="3.0" gaphor-version="2.5.0">
+<StyleSheet id="8154c82a-ceb2-11eb-abe3-018035c40dd4">
+<styleSheet>
+<val>* {
+ background-color: #f8f8f8;
+ color: black;
+ font-family: sans;
+ font-size: 14;
+}
+
+diagram {
+ /* line-style: sloppy 0.3; */
+}
+
+ellipse {
+ background-color: rgba(0, 0, 255, 0.1);</val>
+</styleSheet>
+</StyleSheet>
+<Package id="8154c82b-ceb2-11eb-abe3-018035c40dd4">
+<name>
+<val>New model</val>
+</name>
+<ownedDiagram>
+<reflist>
+<ref refid="8154c82c-ceb2-11eb-abe3-018035c40dd4"/>
+</reflist>
+</ownedDiagram>
+<ownedType>
+<reflist>
+<ref refid="ca325094-ceb2-11eb-abe3-018035c40dd4"/>
+<ref refid="d6d81888-ceb2-11eb-abe3-018035c40dd4"/>
+<ref refid="02d6bbba-ceb3-11eb-abe3-018035c40dd4"/>
+<ref refid="0cd4f870-ceb3-11eb-abe3-018035c40dd4"/>
+<ref refid="17c86546-ceb3-11eb-abe3-018035c40dd4"/>
+<ref refid="231b508e-ceb3-11eb-abe3-018035c40dd4"/>
+<ref refid="4d246000-ceb3-11eb-abe3-018035c40dd4"/>
+</reflist>
+</ownedType>
+</Package>
+<Diagram id="8154c82c-ceb2-11eb-abe3-018035c40dd4">
+<element>
+<ref refid="8154c82b-ceb2-11eb-abe3-018035c40dd4"/>
+</element>
+<name>
+<val>hexagonal architecture</val>
+</name>
+<ownedPresentation>
+<reflist>
+<ref refid="afaf07d0-ceb2-11eb-abe3-018035c40dd4"/>
+<ref refid="bb088520-ceb2-11eb-abe3-018035c40dd4"/>
+<ref refid="c0c49e72-ceb2-11eb-abe3-018035c40dd4"/>
+<ref refid="ca325095-ceb2-11eb-abe3-018035c40dd4"/>
+<ref refid="d6d81889-ceb2-11eb-abe3-018035c40dd4"/>
+<ref refid="02d6bbbb-ceb3-11eb-abe3-018035c40dd4"/>
+<ref refid="0cd4f871-ceb3-11eb-abe3-018035c40dd4"/>
+<ref refid="17c86547-ceb3-11eb-abe3-018035c40dd4"/>
+<ref refid="231b508f-ceb3-11eb-abe3-018035c40dd4"/>
+<ref refid="4d246001-ceb3-11eb-abe3-018035c40dd4"/>
+</reflist>
+</ownedPresentation>
+</Diagram>
+<Ellipse id="afaf07d0-ceb2-11eb-abe3-018035c40dd4">
+<matrix>
+<val>(1.0, 0.0, 0.0, 1.0, 0.0, 0.0)</val>
+</matrix>
+<width>
+<val>510.0</val>
+</width>
+<height>
+<val>462.0</val>
+</height>
+<children>
+<reflist>
+<ref refid="afaf07d0-ceb2-11eb-abe3-018035c40dd4"/>
+</reflist>
+</children>
+<diagram>
+<ref refid="8154c82c-ceb2-11eb-abe3-018035c40dd4"/>
+</diagram>
+<parent>
+<ref refid="afaf07d0-ceb2-11eb-abe3-018035c40dd4"/>
+</parent>
+</Ellipse>
+<Ellipse id="bb088520-ceb2-11eb-abe3-018035c40dd4">
+<matrix>
+<val>(1.0, 0.0, 0.0, 1.0, 34.49999999999994, 174.49588389496392)</val>
+</matrix>
+<width>
+<val>600.5</val>
+</width>
+<height>
+<val>540.0</val>
+</height>
+<diagram>
+<ref refid="8154c82c-ceb2-11eb-abe3-018035c40dd4"/>
+</diagram>
+</Ellipse>
+<Ellipse id="c0c49e72-ceb2-11eb-abe3-018035c40dd4">
+<matrix>
+<val>(1.0, 0.0, 0.0, 1.0, 196.24999999999994, 330.4958838949639)</val>
+</matrix>
+<width>
+<val>248.0</val>
+</width>
+<height>
+<val>228.0</val>
+</height>
+<diagram>
+<ref refid="8154c82c-ceb2-11eb-abe3-018035c40dd4"/>
+</diagram>
+</Ellipse>
+<Component id="ca325094-ceb2-11eb-abe3-018035c40dd4">
+<name>
+<val>core.modeling</val>
+</name>
+<package>
+<ref refid="8154c82b-ceb2-11eb-abe3-018035c40dd4"/>
+</package>
+<presentation>
+<reflist>
+<ref refid="ca325095-ceb2-11eb-abe3-018035c40dd4"/>
+</reflist>
+</presentation>
+</Component>
+<ComponentItem id="ca325095-ceb2-11eb-abe3-018035c40dd4">
+<matrix>
+<val>(1.0, 0.0, 0.0, 1.0, 239.74999999999994, 379.4958838949639)</val>
+</matrix>
+<width>
+<val>161.0</val>
+</width>
+<height>
+<val>50.0</val>
+</height>
+<diagram>
+<ref refid="8154c82c-ceb2-11eb-abe3-018035c40dd4"/>
+</diagram>
+<subject>
+<ref refid="ca325094-ceb2-11eb-abe3-018035c40dd4"/>
+</subject>
+</ComponentItem>
+<Component id="d6d81888-ceb2-11eb-abe3-018035c40dd4">
+<name>
+<val>storage</val>
+</name>
+<package>
+<ref refid="8154c82b-ceb2-11eb-abe3-018035c40dd4"/>
+</package>
+<presentation>
+<reflist>
+<ref refid="d6d81889-ceb2-11eb-abe3-018035c40dd4"/>
+</reflist>
+</presentation>
+</Component>
+<ComponentItem id="d6d81889-ceb2-11eb-abe3-018035c40dd4">
+<matrix>
+<val>(1.0, 0.0, 0.0, 1.0, 168.99999999999994, 246.49588389496392)</val>
+</matrix>
+<width>
+<val>161.0</val>
+</width>
+<height>
+<val>50.0</val>
+</height>
+<diagram>
+<ref refid="8154c82c-ceb2-11eb-abe3-018035c40dd4"/>
+</diagram>
+<subject>
+<ref refid="d6d81888-ceb2-11eb-abe3-018035c40dd4"/>
+</subject>
+</ComponentItem>
+<Component id="02d6bbba-ceb3-11eb-abe3-018035c40dd4">
+<name>
+<val>UI</val>
+</name>
+<package>
+<ref refid="8154c82b-ceb2-11eb-abe3-018035c40dd4"/>
+</package>
+<presentation>
+<reflist>
+<ref refid="02d6bbbb-ceb3-11eb-abe3-018035c40dd4"/>
+</reflist>
+</presentation>
+</Component>
+<ComponentItem id="02d6bbbb-ceb3-11eb-abe3-018035c40dd4">
+<matrix>
+<val>(1.0, 0.0, 0.0, 1.0, 413.99999999999994, 296.4958838949639)</val>
+</matrix>
+<width>
+<val>161.0</val>
+</width>
+<height>
+<val>50.0</val>
+</height>
+<diagram>
+<ref refid="8154c82c-ceb2-11eb-abe3-018035c40dd4"/>
+</diagram>
+<subject>
+<ref refid="02d6bbba-ceb3-11eb-abe3-018035c40dd4"/>
+</subject>
+</ComponentItem>
+<Component id="0cd4f870-ceb3-11eb-abe3-018035c40dd4">
+<name>
+<val>undo/redo</val>
+</name>
+<package>
+<ref refid="8154c82b-ceb2-11eb-abe3-018035c40dd4"/>
+</package>
+<presentation>
+<reflist>
+<ref refid="0cd4f871-ceb3-11eb-abe3-018035c40dd4"/>
+</reflist>
+</presentation>
+</Component>
+<ComponentItem id="0cd4f871-ceb3-11eb-abe3-018035c40dd4">
+<matrix>
+<val>(1.0, 0.0, 0.0, 1.0, 429.49999999999994, 515.495883894964)</val>
+</matrix>
+<width>
+<val>161.0</val>
+</width>
+<height>
+<val>50.0</val>
+</height>
+<diagram>
+<ref refid="8154c82c-ceb2-11eb-abe3-018035c40dd4"/>
+</diagram>
+<subject>
+<ref refid="0cd4f870-ceb3-11eb-abe3-018035c40dd4"/>
+</subject>
+</ComponentItem>
+<Component id="17c86546-ceb3-11eb-abe3-018035c40dd4">
+<name>
+<val>diagram</val>
+</name>
+<package>
+<ref refid="8154c82b-ceb2-11eb-abe3-018035c40dd4"/>
+</package>
+<presentation>
+<reflist>
+<ref refid="17c86547-ceb3-11eb-abe3-018035c40dd4"/>
+</reflist>
+</presentation>
+</Component>
+<ComponentItem id="17c86547-ceb3-11eb-abe3-018035c40dd4">
+<matrix>
+<val>(1.0, 0.0, 0.0, 1.0, 239.74999999999994, 453.4958838949639)</val>
+</matrix>
+<width>
+<val>161.0</val>
+</width>
+<height>
+<val>50.0</val>
+</height>
+<diagram>
+<ref refid="8154c82c-ceb2-11eb-abe3-018035c40dd4"/>
+</diagram>
+<subject>
+<ref refid="17c86546-ceb3-11eb-abe3-018035c40dd4"/>
+</subject>
+</ComponentItem>
+<Component id="231b508e-ceb3-11eb-abe3-018035c40dd4">
+<name>
+<val>copy/paste</val>
+</name>
+<package>
+<ref refid="8154c82b-ceb2-11eb-abe3-018035c40dd4"/>
+</package>
+<presentation>
+<reflist>
+<ref refid="231b508f-ceb3-11eb-abe3-018035c40dd4"/>
+</reflist>
+</presentation>
+</Component>
+<ComponentItem id="231b508f-ceb3-11eb-abe3-018035c40dd4">
+<matrix>
+<val>(1.0, 0.0, 0.0, 1.0, 24.999999999999943, 435.4958838949639)</val>
+</matrix>
+<width>
+<val>139.0</val>
+</width>
+<height>
+<val>50.0</val>
+</height>
+<diagram>
+<ref refid="8154c82c-ceb2-11eb-abe3-018035c40dd4"/>
+</diagram>
+<subject>
+<ref refid="231b508e-ceb3-11eb-abe3-018035c40dd4"/>
+</subject>
+</ComponentItem>
+<Component id="4d246000-ceb3-11eb-abe3-018035c40dd4">
+<name>
+<val>modeling languages</val>
+</name>
+<package>
+<ref refid="8154c82b-ceb2-11eb-abe3-018035c40dd4"/>
+</package>
+<presentation>
+<reflist>
+<ref refid="4d246001-ceb3-11eb-abe3-018035c40dd4"/>
+</reflist>
+</presentation>
+</Component>
+<ComponentItem id="4d246001-ceb3-11eb-abe3-018035c40dd4">
+<matrix>
+<val>(1.0, 0.0, 0.0, 1.0, 185.99999999999994, 596.495883894964)</val>
+</matrix>
+<width>
+<val>195.0</val>
+</width>
+<height>
+<val>50.0</val>
+</height>
+<diagram>
+<ref refid="8154c82c-ceb2-11eb-abe3-018035c40dd4"/>
+</diagram>
+<subject>
+<ref refid="4d246000-ceb3-11eb-abe3-018035c40dd4"/>
+</subject>
+</ComponentItem>
+</gaphor>

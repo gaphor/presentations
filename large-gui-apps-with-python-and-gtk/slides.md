@@ -157,7 +157,8 @@ class AppWindow:
 In Python, use `entry_points`.
 
 Defined in `pyproject.toml`:
-```
+
+```toml
 [tool.poetry.plugins."gaphor.services"]
 "component_registry" = "gaphor.services.componentregistry:ComponentRegistry"
 "event_manager" = "gaphor.core.eventmanager:EventManager"

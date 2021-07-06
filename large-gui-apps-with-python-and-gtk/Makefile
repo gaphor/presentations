@@ -19,9 +19,6 @@ help: ## This help.
 # DOCKER TASKS
 
 run: ## Run container on port configured in `config.env`
-	docker run --rm --name "$(APP_NAME)" -p $(PORT):$(PORT) -v $(ROOT_DIR)/:/slides webpronl/reveal-md:latest
+	docker run --rm --name "$(APP_NAME)" -p $(PORT):$(PORT) -v $(ROOT_DIR)/:/slides:z webpronl/reveal-md:latest
 
 up: run ## Run container on port configured in `config.env` (Alias to run)
-
-stop: ## Stop and remove a running container
-	docker stop $(APP_NAME); docker rm $(APP_NAME)

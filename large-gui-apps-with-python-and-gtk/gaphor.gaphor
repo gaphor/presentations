@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<gaphor xmlns="http://gaphor.sourceforge.net/model" version="3.0" gaphor-version="2.5.0">
+<gaphor xmlns="http://gaphor.sourceforge.net/model" version="3.0" gaphor-version="2.5.1">
 <StyleSheet id="8154c82a-ceb2-11eb-abe3-018035c40dd4">
 <styleSheet>
 <val>* {
@@ -232,7 +232,7 @@ ellipse {
 </ComponentItem>
 <Component id="17c86546-ceb3-11eb-abe3-018035c40dd4">
 <name>
-<val>diagram</val>
+<val>event manager</val>
 </name>
 <package>
 <ref refid="8154c82b-ceb2-11eb-abe3-018035c40dd4"/>
@@ -275,7 +275,7 @@ ellipse {
 </Component>
 <ComponentItem id="231b508f-ceb3-11eb-abe3-018035c40dd4">
 <matrix>
-<val>(1.0, 0.0, 0.0, 1.0, 24.999999999999943, 435.4958838949639)</val>
+<val>(1.0, 0.0, 0.0, 1.0, 43.99999999999994, 419.4958838949639)</val>
 </matrix>
 <width>
 <val>139.0</val>

@@ -21,7 +21,6 @@ systems to embedded applications. I'm a long time GNOME user and core
 contributor to a modeling tool called Gaphor.
 
 ---
-
 ## What are we looking for
 
 - Easy to work on
@@ -74,7 +73,18 @@ GObject also provides signals handling, so you can register a handler on an even
 your object and handle it. For example a button press, or a property change.
 
 ---
+## Python 101
 
+- Dynamically typed language
+- Multi-paradigm: functional, OO
+- Good interoperability with C
+- Used in many fields
+
+Notes:
+
+Python is used in many fields, ranging from data science to web services to Mars landers.
+
+---
 ## Easy of Use: typing (Mypy)
 
 - Python is a dynamically typed language
@@ -92,7 +102,7 @@ Note:
 Python is dynamically typed. That does not mean there are no types!
 Types do exist. For example: a method call still requires that method to be defined
 on that object. It's helpful in larger code bases to leave out the guess work and type
-methods, especially at the interface boundries.
+methods, especially at component boundries.
 
 At first I was a bit skeptical adding type information to Python. But I found it to be a good addition,
 for understandability (you do not have to look where a method is called to find out it's arguments) and
@@ -103,7 +113,6 @@ A protocol defines the methods that are expected on an object. This can be type 
 inheritance is required, like with strong typed languages.
 
 ---
-
 ## Folder structure
 
 - Based on feature, not component type
@@ -128,13 +137,26 @@ gaphor/
    storage/
 ```
 </div>
----
 
+Notes:
+
+Another important aspect is how you can relate to the application's functionality.
+
+The layout on the right is easier to relate to the functionality of the application
+than the structure on the left. The left is more a classic layered approach, where
+each layer is presented by a package. The structure on the right represents the
+functionality/features found in the application. If you know the UI, you can much
+easier find your way.
+
+---
 ## Composition over inheritance
 
-- Easier to manage than inheriting from widgets
+- Inheritance is static
+- Composition is dynamic
 - Separation of concerns
-- User interaction is often done via multiple widgets
+- For widgets:
+  - Easier to manage than inheriting from widgets
+  - User interaction is often done via multiple widgets
 
 Note:
 
@@ -153,19 +175,20 @@ input field itself. There should be some logic behind it that verifies what is v
 (say checking a checkbox would require additional information to be filled in).
 
 ---
-
 ### Composition over inheritance
+
+<img src="inheritance.svg" style="position: absolute; right: 0; display: block; z-index: 2; margin: 0; padding: .23em; background-color: rgba(255, 255, 255, 1)">
 
 Don't:
 
+
 ```python
 class AppWindow(Gtk.ApplicationWindow):
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
+    def __init__(self):
+        super().__init__()
 
-        self.label = Gtk.Label(label=lbl_variant.get_string(), margin=30)
+        self.label = Gtk.Label(label="label")
         self.add(self.label)
-        self.label.show()
 
     def on_change_label_state(self, action, value):
         ...
@@ -175,8 +198,9 @@ class AppWindow(Gtk.ApplicationWindow):
 ```
 
 ---
-
 ### Composition over inheritance
+
+<img src="composition.svg" style="position: absolute; right: 0; display: block; z-index: 2; margin: 0; padding: .23em; background-color: rgba(255, 255, 255, 1)">
 
 Do:
 
@@ -184,11 +208,10 @@ Do:
 class AppWindow:
 
     def construct(self):
-        self.window = Gtk.Application()
+        self.window = Gtk.ApplicationWindow()
 
-        self.label = Gtk.Label(label=lbl_variant.get_string(), margin=30)
+        self.label = Gtk.Label(label="label")
         self.window.add(self.label)
-        self.label.show()
         ... # hook up signal handlers
 
     def on_change_label_state(self, action, value):
@@ -196,18 +219,15 @@ class AppWindow:
 
     def on_maximize_toggle(self, action, value):
         ...
-
 ```
 ---
-
 ## Modularity
 
 - Services
-- Generic functions / dynamic dispatch
 - Event dispatching
+- Generic functions / dynamic dispatch
 
 ---
-
 ### Services
 
 In Python, use `entry_points`.
@@ -224,51 +244,14 @@ Defined in `pyproject.toml`:
 "file_manager" = "gaphor.ui.filemanager:FileManager"
 ```
 
----
-### Pure Python core
-
-<div style="column-count: 2">
-
-- "Hexagonal" architecture
-- testable code base
-- separation between application core and functionality
-
-<img src="hexagonal-arch.svg">
-
-</div>
-
 Notes:
 
-The services mainly make up for the outer boundaries of the architecture.
-Replaceable things like an undo system and file manager. The core is defined
-by a couple of packages that define essental features of the application:
-the base model classes and diagramming functionality.
+Services in Python can be made with entry_points. This is a standard Python feature.
+All registered services (gaphor.services) can be loaded, irregardles of the
+package they can be found in. This mechanism can therefore be used to implement
+plugins for free.
 
 ---
-
-### Generic functions
-
-Multiple functions with the same name, dispatched based on the parameter type.
-
-Logic can be added incrementally.
-
-```python
-@singledispatch
-def copy(obj: object):
-    ...
-
-@copy.register
-def _copy_named_element(element: NamedElement):
-    return element.id, copy_named_element(element)
-
-@copy.register
-def copy_transition(element: Transition):
-    yield element.id, copy_named_element(element)
-    if element.guard:
-        yield from copy(element.guard)
-```
----
-
 ## Event dispatching
 
 <div style="column-count: 2">
@@ -292,9 +275,63 @@ a handler.
 Events are created as a hierarchy (yes we used inheritance there), so
 an element can register for a property change in the model or for a specific
 change on a relation between two objects in the model. 
+
 ---
+### Pure Python core
 
+<div style="column-count: 2">
 
+- "Hexagonal" architecture
+- testable code base
+- separation between application core and functionality
+
+<img src="hexagonal-arch.svg">
+
+</div>
+
+Notes:
+
+The services mainly make up for the outer boundaries of the architecture.
+Replaceable things like an undo system and file manager. The core is defined
+by a couple of packages that define essental features of the application:
+the base model classes and diagramming functionality.
+
+---
+### Generic functions
+
+Multiple functions with the same name, dispatched based on the parameter type.
+
+Logic can be added incrementally.
+
+```python
+@singledispatch
+def copy(obj: object):
+    ...
+
+@copy.register
+def copy_named_element(element: NamedElement):
+    return element.id, copy_named_element(element)
+
+@copy.register
+def copy_transition(element: Transition):
+    yield element.id, copy_named_element(element)
+    if element.guard:
+        yield from copy(element.guard)
+```
+
+Notes:
+
+The second extensibility mechanism Gaphor uses, is Generic functions. Python
+has such a functionallity in the standard library. The `copy` function will
+behave differently, depending on the type of element parameter. This allows to
+extend functionality of the copy function. This mechanism also allows to
+extend the functionality of the application incrementally, e.g. when new modeling
+languages are introduced.
+
+This mechanism can be used for different aspects of the application: text formatting,
+editors, item connections, grouping.
+
+---
 # Take away
 
 - Create a stable core and build features on that
@@ -307,7 +344,6 @@ Strive for an architecture with a small, library independant core.
 Typing is your friend, even in a dynamic language.
 
 ---
-
 # Questions?
 
 @ajmolenaar / gaphor@gmail.com

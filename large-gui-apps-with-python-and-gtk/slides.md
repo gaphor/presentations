@@ -23,8 +23,8 @@ contributor to a modeling tool called Gaphor.
 ---
 ## What are we looking for
 
-- Easy to work on
-- Modular
+- Accessible,
+- Modular,
 - Extensible code base
 
 Notes:
@@ -34,7 +34,7 @@ What are we looking for in a large code base:
 1. Easy to work with. Python is a dynamically typed language. Since the code base gets larger, and we want to
    be extensible, we need to do some extra work to help with coding.
 2. modularity: this allows you to work on one part of the application without knowledge of other parts.
-3. Extensibility follows from modularity. Once a code base is modular, it should be easy to add new functionality
+3. Extensibility follows from modularity. Once a code base is modular, it should be easy to add new functionality.
 
 ---
 ## The case: Gaphor
@@ -62,6 +62,8 @@ with the tools I worked with (Rational Rose) and thought I can do better.
 
 <img src="gtk.png">
 
+</div>
+
 Notes:
 
 This application is built with GTK. GTK is a cross platform GUI toolkit.
@@ -85,7 +87,23 @@ Notes:
 Python is used in many fields, ranging from data science to web services to Mars landers.
 
 ---
-## Easy of Use: typing (Mypy)
+
+## Accessibility
+
+- Python type annotations
+- Package structure
+- Composition over inheritance
+
+Notes:
+
+To make code more accessible we made some changes over the past years:
+
+- introduced type annotations to helps us (and others) in coding (command completion in IDE's)
+- The package layout has changed
+
+---
+
+### Programmer aid: typing (Mypy)
 
 - Python is a dynamically typed language
 - Type annotation avoid mistakes
@@ -113,7 +131,7 @@ A protocol defines the methods that are expected on an object. This can be type 
 inheritance is required, like with strong typed languages.
 
 ---
-## Folder structure
+### Package structure
 
 - Based on feature, not component type
 
@@ -149,7 +167,7 @@ functionality/features found in the application. If you know the UI, you can muc
 easier find your way.
 
 ---
-## Composition over inheritance
+### Composition over inheritance
 
 - Inheritance is static
 - Composition is dynamic
@@ -175,7 +193,7 @@ input field itself. There should be some logic behind it that verifies what is v
 (say checking a checkbox would require additional information to be filled in).
 
 ---
-### Composition over inheritance
+#### Composition over inheritance
 
 <img src="inheritance.svg" style="position: absolute; right: 0; display: block; z-index: 2; margin: 0; padding: .23em; background-color: rgba(255, 255, 255, 1)">
 
@@ -198,7 +216,7 @@ class AppWindow(Gtk.ApplicationWindow):
 ```
 
 ---
-### Composition over inheritance
+#### Composition over inheritance
 
 <img src="composition.svg" style="position: absolute; right: 0; display: block; z-index: 2; margin: 0; padding: .23em; background-color: rgba(255, 255, 255, 1)">
 
@@ -227,6 +245,16 @@ class AppWindow:
 - Event dispatching
 - Generic functions / dynamic dispatch
 
+Notes:
+
+All code neatly organized in packages, that's only s start.
+
+For code to be modular it also should allow to work on one part of the code
+without knowing about other parts.
+
+In Gaphor we achive this by using a service oriented approach. Services are
+loosely coupled and communicate via event dispatching.
+
 ---
 ### Services
 
@@ -242,6 +270,13 @@ Defined in `pyproject.toml`:
 "undo_manager" = "gaphor.services.undomanager:UndoManager"
 "modeling_language" = "gaphor.services.modelinglanguage:ModelingLanguageService"
 "file_manager" = "gaphor.ui.filemanager:FileManager"
+```
+
+```python
+class UndoManager(Service):
+
+    def __init__(self, event_manager, element_factory):
+        ...
 ```
 
 Notes:
@@ -299,7 +334,8 @@ the base model classes and diagramming functionality.
 ---
 ### Generic functions
 
-Multiple functions with the same name, dispatched based on the parameter type.
+Multiple functions with the same name,<br>
+dispatched based on the parameter type.
 
 Logic can be added incrementally.
 
@@ -321,12 +357,12 @@ def copy_transition(element: Transition):
 
 Notes:
 
-The second extensibility mechanism Gaphor uses, is Generic functions. Python
-has such a functionallity in the standard library. The `copy` function will
+The second extensibility mechanism Gaphor uses, is Generic functions. 
+This mechanism is complementary to services. It allows for extending the functionality of a service.
+
+Python has such a functionallity in the standard library. The `copy` function will
 behave differently, depending on the type of element parameter. This allows to
-extend functionality of the copy function. This mechanism also allows to
-extend the functionality of the application incrementally, e.g. when new modeling
-languages are introduced.
+extend functionality of the copy service.
 
 This mechanism can be used for different aspects of the application: text formatting,
 editors, item connections, grouping.
@@ -334,9 +370,9 @@ editors, item connections, grouping.
 ---
 # Take away
 
-- Create a stable core and build features on that
 - Typing, even in a dynamic language is your friend
 - Favor composition over inheritance
+- Create a stable core and build features on that
 
 Notes:
 

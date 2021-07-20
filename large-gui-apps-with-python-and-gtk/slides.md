@@ -373,6 +373,7 @@ editors, item connections, grouping.
 - Typing, even in a dynamic language is your friend
 - Favor composition over inheritance
 - Create a stable core and build features on that
+- Use the strengts of the programming language and ecosystem
 
 Notes:
 

@@ -1,16 +1,28 @@
-# GUADEC 2025 Presentation Templates
+# State of Python in GNOME
 
-This repository contains templates usable for presentations for GUADEC 2025.
+This repository contains a presentation for GUADEC 2025.
 
-The following commands will get you the template:
+The format is based on the following template:
 
 ```
 git clone https://gitlab.gnome.org/GNOME/presentation-templates.git
 cd presentation-templates/GUADEC/2025
 ```
 
-Don't worry - you **don't need to write LaTeX**! Pandoc is easy! Please give it a
-try so we all can have consistent and pretty presentations.
+## Dependencies
+
+### Fedora
+
+```bash
+$ dnf copr enable cimbali/pympress
+$ sudo dnf install python3-pympress pandoc texlive-latex texlive-beamer texlive-ec texlive-framed texlive-mptopdf
+```
+
+### OpenSUSE
+
+```bash
+$ sudo zypper install pympress pandoc texlive-latex texlive-beamer texlive-ec texlive-framed texlive-mptopdf
+```
 
 ## How Can I Create a Presentation?
 
@@ -34,3 +46,16 @@ presentation. It's easy! Please try it out!
 
 You can also use LaTeX directly. Use the `make tex` command to compile the
 example tex document into a presentation.
+
+### Speaker Notes
+
+Configuration for beamer is in the .sty files. To change speaker note options, then edit
+`beamerthemeguadec.sty` and uncomment the `\setbeameroption`.
+
+## Present
+
+Present with speaker notes with [pympress](https://github.com/Cimbali/pympress).
+
+```bash
+$ pympress presentation.pdf
+```

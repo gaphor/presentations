@@ -54,7 +54,7 @@ a build system for GTK on Windows.
 
 ::: notes
 
-PyGObject is Python in GNOME. It is the successor to PyGTK that James Henstridge started in 1998 that uses gobject-introspection directly to allow you to build GNOME apps using Python. If you see the patterns in the app icons here, those deep interests that people geek out on includes drawing and art, modeling, graphing, music, genealogy, manga, classic gaming, and scientific reports.
+PyGObject is Python in GNOME. It is the successor to PyGTK that James Henstridge started in 1998 that uses the girepository library to allow you to build GNOME apps using Python. If you see the patterns in the app icons here, those deep interests that people geek out on includes drawing and art, modeling, graphing, music, genealogy, manga, classic gaming, and scientific reports.
 
 :::
 
@@ -89,6 +89,7 @@ https://gitlab.gnome.org/GNOME/pygobject
 - Add examples to Workbench
 - Build projects with PyGObject
 - Chat with us at #python:gnome.org
+- Blog and create videos
 
 ::: notes
 Many of you have even more ideas on what we could improve next, and we would love to have your contributions!

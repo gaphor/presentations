@@ -33,6 +33,9 @@ We have been helping to maintain PyGObject and have been GNOME Foundation member
 for the last couple years.
 
 Arjan:
+I'm a software consultant by day, open source hacker by night. Live in The Netherlands.
+Since roughly a year I've been maintaining PyGObject. Apart from that I try to improve
+the support for GTK on macOS.
 
 Dan:
 As Engineering Manager for Open Source Software at Anaconda, I lead teams
@@ -67,16 +70,50 @@ PyGObject is Python in GNOME. It is the successor to PyGTK that James Henstridge
 * Automatic release pipeline (3 min)
 * Other notable improvements (5 min)
 
+## Improvements to AsyncIO support
+
+It's easier to start using `asyncio`:
+
+```python
+app = Adw.Application(...)
+
+with gi.events.GLibEventLoopPolicy():
+    app.run()
+```
+
+Kudos to Benjamin Berg
+
+## Enhanced documentation and examples (2 min)
+
+https://api.pygobject.gnome.org
+
+* The documentation is built using PyGObject.
+* Only GNOME core libs.
+* Recently added docs for async methods.
+* GTK 3 docs are still available on https://lazka.github.io/pgi-docs/
+
+TODO: screenshot
+
+## Migration to girepository 2.0
+
+* gobject-introspection is close to EoL (TOFO check with Philip)
+* Improved the code base
+* Unfortunate fallout: apps not able to upgrade due to dependency on gobject-introspection
+
 ## What's Next in GNOME Python (10 min total)
 
 * Continuing to improve APIs and Python API doc examples (4 min)
-* Vision and roadmap for the future (6 min)
 
-## Wrap-up (7 min total)
+## Vision and roadmap for the future (6 min)
 
-* Call to action: How to get involved (3 min)
-* Resources and support channels (2 min)
-* Contact information and Q&A invitation (2 min)
+* PyGObject is mature
+* Take advantage of new Python features
+* Reduce the amount of custom code (pygtkcompat, option parser)
+* A local documentation browser for all GI libraries on your system?
+
+::: notes
+
+:::
 
 ## Call to Action
 

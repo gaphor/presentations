@@ -1,6 +1,7 @@
 % The State of Python in GNOME
 % Dan Yeaw (@danyeaw:gnome.org), Arjan Molenaar (@amolenaar:gnome.org)
-% July 24, 2025
+% July 24, 2025 - Creative Commons Attribution-Noncommercial (CC BY-NC)
+
 
 ## About Us
 
@@ -151,8 +152,5 @@ Thank you so much to everyone who has contributed to PyGObject!
 
 Slides:
 https://github.com/gaphor/presentations/tree/main/state-of-python-in-gnome-2025
-
-
-Creative Commons Attribution-Noncommercial (CC BY-NC)
 
 # Questions?

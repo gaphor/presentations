@@ -2,27 +2,28 @@
 % Dan Yeaw (@danyeaw:gnome.org), Arjan Molenaar (@amolenaar:gnome.org)
 % July 24, 2025
 
-## Introduction (5 min total)
-
-* Who we are and our roles in GNOME Python (2 min)
-* Overview of GNOME Python ecosystem and its importance (3 min)
-
 ## About Us
 
-```{=latex}
-\begin{center}
-```
-![](picture.jpg)
-```{=latex}
-\end{center}
-```
+::: columns
 
-- Arjan Molenaar
+:::: column
+Arjan Molenaar
 
-- Dan Yeaw (pronounced: Yaw)
+- From The Netherlands
+- PyGObject and Gaphor
+- GTK on macOS
+::::
+
+:::: column
+Dan Yeaw (pronounced: Yaw)
+
 - Originally from California, now live in Michigan
 
 - PyGObject and Gaphor
+- Gvsbuild
+::::
+
+:::
 
 ::: notes
 
@@ -51,7 +52,7 @@ a build system for GTK on Windows.
 
 ## GNOME Python
 
-- PyGObject is the GTK and related library bindings for Python
+PyGObject is the GTK and related library bindings for Python
 
 ![](app-icons.png){height=65%}
 
@@ -61,14 +62,14 @@ PyGObject is Python in GNOME. It is the successor to PyGTK that James Henstridge
 
 :::
 
-## What's New in GNOME Python (18 min total)
+## What's New in GNOME Python
 
-* Improvements to AsyncIO support (4 min)
-* Enhanced documentation and examples (2 min)
-* Code formatting and linting (2 min)
-* Migration to girepository 2.0 (3 min)
-* Automatic release pipeline (3 min)
-* Other notable improvements (5 min)
+* Improvements to AsyncIO support
+* Enhanced documentation and examples
+* Code formatting and linting
+* Migration to girepository 2.0
+* Automatic release pipeline
+* Other notable improvements
 
 ## Improvements to AsyncIO support
 
@@ -83,32 +84,43 @@ with gi.events.GLibEventLoopPolicy():
 
 Kudos to Benjamin Berg
 
-## Enhanced documentation and examples (2 min)
+## Enhanced documentation and examples
 
-https://api.pygobject.gnome.org
+::: columns
 
+:::: column
 * The documentation is built using PyGObject.
 * Only GNOME core libs.
 * Recently added docs for async methods.
 * GTK 3 docs are still available on https://lazka.github.io/pgi-docs/
+::::
 
-TODO: screenshot
+:::: column
+![](api-docs.png){height=65%}
+
+https://api.pygobject.gnome.org
+::::
+
+:::
 
 ## Migration to girepository 2.0
 
-* gobject-introspection is close to EoL (TOFO check with Philip)
 * Improved the code base
+
 * Unfortunate fallout: apps not able to upgrade due to dependency on gobject-introspection
 
-## What's Next in GNOME Python (10 min total)
+## What's Next in GNOME Python
 
-* Continuing to improve APIs and Python API doc examples (4 min)
+* Continuing to improve APIs and Python API doc examples
 
-## Vision and roadmap for the future (6 min)
+* Reduce the amount of custom code (pygtkcompat, option parser)
+
+## Vision and roadmap for the future
 
 * PyGObject is mature
+
 * Take advantage of new Python features
-* Reduce the amount of custom code (pygtkcompat, option parser)
+
 * A local documentation browser for all GI libraries on your system?
 
 ::: notes
@@ -135,13 +147,12 @@ Many of you have even more ideas on what we could improve next, and we would lov
 
 ## Wrap Up
 
-### Thanks!
 Thank you so much to everyone who has contributed to PyGObject!
 
-### License
-Creative Commons Attribution-Noncommercial (CC BY-NC)
-
-### Slides
+Slides:
 https://github.com/gaphor/presentations/tree/main/state-of-python-in-gnome-2025
+
+
+Creative Commons Attribution-Noncommercial (CC BY-NC)
 
 # Questions?

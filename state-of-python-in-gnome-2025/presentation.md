@@ -122,6 +122,8 @@ https://api.pygobject.gnome.org
 
 * Take advantage of new Python features
 
+* Better type support
+
 * A local documentation browser for all GI libraries on your system?
 
 ::: notes

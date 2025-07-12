@@ -18,7 +18,7 @@ Arjan Molenaar
 :::: column
 Dan Yeaw (pronounced: Yaw)
 
-- Originally from California, now live in Michigan
+- Originally from California, now lives in Michigan
 
 - PyGObject and Gaphor
 - Gvsbuild
@@ -59,7 +59,25 @@ PyGObject is the GTK and related library bindings for Python
 
 ::: notes
 
-PyGObject is Python in GNOME. It is the successor to PyGTK that James Henstridge started in 1998 that uses the girepository library to allow you to build GNOME apps using Python. If you see the patterns in the app icons here, those deep interests that people geek out on includes drawing and art, modeling, graphing, music, genealogy, manga, classic gaming, and scientific reports.
+Dan: PyGObject is Python in GNOME. It is the successor to PyGTK that James Henstridge started in 1998 that uses the girepository library to allow you to build GNOME apps using Python. If you see the patterns in the app icons here, those deep interests that people geek out on includes drawing and art, modeling, graphing, music, genealogy, manga, classic gaming, and scientific reports.
+
+:::
+
+## GNOME 49 with Showtime
+
+```{=latex}
+\begin{center}
+```
+
+![](Showtime.png){ height=80% }
+
+```{=latex}
+\end{center}
+```
+
+::: notes
+
+Dan: When GNOME 49 is released in September, it will include a new default video app called Video Player (with the codenamed Showtime). This is an example of the type of app that really shines using Python.
 
 :::
 
@@ -71,6 +89,10 @@ PyGObject is Python in GNOME. It is the successor to PyGTK that James Henstridge
 * Migration to girepository 2.0
 * Automatic release pipeline
 * Other notable improvements
+
+::: notes
+
+:::
 
 ## Improvements to AsyncIO support
 
@@ -84,6 +106,14 @@ with gi.events.GLibEventLoopPolicy():
 ```
 
 Kudos to Benjamin Berg
+
+::: notes
+
+Should we add a before and after?
+
+Arjan:  
+
+:::
 
 ## Enhanced documentation and examples
 
@@ -110,11 +140,19 @@ https://api.pygobject.gnome.org
 
 * Unfortunate fallout: apps not able to upgrade due to dependency on gobject-introspection
 
+::: notes
+
+:::
+
 ## What's Next in GNOME Python
 
 * Continuing to improve APIs and Python API doc examples
 
 * Reduce the amount of custom code (pygtkcompat, option parser)
+
+::: notes
+
+:::
 
 ## Vision and roadmap for the future
 
@@ -154,5 +192,9 @@ Thank you so much to everyone who has contributed to PyGObject!
 
 Slides:
 https://github.com/gaphor/presentations/tree/main/state-of-python-in-gnome-2025
+
+::: notes
+
+:::
 
 # Questions?

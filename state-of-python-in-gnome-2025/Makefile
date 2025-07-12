@@ -17,5 +17,11 @@ continuous: pandoc
 clean:
 	rm -Rf $(PANDOC_OUT)
 
-.PHONY: all clean
+watch:
+	while true; do \
+    		inotifywait -qr -e modify -e create -e delete -e move presentation.md; \
+		make; \
+	done
+
+.PHONY: all clean watch
 

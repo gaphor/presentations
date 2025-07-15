@@ -108,11 +108,18 @@ with gi.events.GLibEventLoopPolicy():
 Kudos to Benjamin Berg
 
 ::: notes
+TODO: Should we add a before and after?
 
-Should we add a before and after?
+We've implemented asyncio support in Gaphor, our other project, as soon as it
+was available. And we're sooo happy. It makes the code so much simpler. Just not having to
+deal with all those callbacks is totally worth it.
 
-Arjan:  
+The credits for this feeature as all for Benjamin, as he did all the heavy lifting.
 
+We added the feature as an experimental feature in 3.50. In 3.52 a few convenience API's were added.
+
+Unfortunately we have to revisit parts of the code: some features we currently rely on will be removed
+in Python 3.16.
 :::
 
 ## Enhanced documentation and examples
@@ -120,9 +127,9 @@ Arjan:
 ::: columns
 
 :::: column
-* The documentation is built using PyGObject.
-* Only GNOME core libs.
-* Recently added docs for async methods.
+* The documentation is built using PyGObject
+* Only GNOME core libs
+* Recently added docs for async methods
 * GTK 3 docs are still available on https://lazka.github.io/pgi-docs/
 ::::
 
@@ -134,6 +141,11 @@ https://api.pygobject.gnome.org
 
 :::
 
+::: notes
+The documentation is coming along well. With asynchronous methods documented, we're
+pretty much on par with the functionality GObject provides.
+:::
+
 ## Migration to girepository 2.0
 
 * Improved the code base
@@ -141,31 +153,52 @@ https://api.pygobject.gnome.org
 * Unfortunate fallout: apps not able to upgrade due to dependency on gobject-introspection
 
 ::: notes
+This is kind of the elephant in the room. With PyGObject 3.52 we moved from gobject-introspection
+to girepository as the underlaying library for introspection bindings.
 
+Although girepository had a positive effect on the code, it turned out that a number of applications,
+especially the ones that depend on libpeas or directly depend on gobject-introspection.
+
+I was not aware of the blast radius of this change.
+
+I believe it's better for the upcoming GNOME release. Emanualle Bassi has a talk on how we can prevent
+those issues from happening in the future.
 :::
 
 ## What's Next in GNOME Python
 
-* Continuing to improve APIs and Python API doc examples
-
-* Reduce the amount of custom code (pygtkcompat, option parser)
-
-::: notes
-
-:::
-
-## Vision and roadmap for the future
-
 * PyGObject is mature
 
+* Remove deprecated bits
+
 * Take advantage of new Python features
+  * Free threading Python
+  * Changes in `asyncio`
 
 * Better type support
 
 * A local documentation browser for all GI libraries on your system?
 
 ::: notes
+PyGObject has been stable and used for years. That's not going to change.
 
+The focus will be on bringing PyGObject into the futute.
+This means removing deprecated code, and adding support for new Python features.
+
+One of those is "free-threaded" Python. Historically Python had one big Global Interpreter Lock,
+the GIL that made sure only one thread was executing code in a Python interpreter. With
+"Free-threaded" Python, the locks are more fine grained. However, it only works if all libraries
+also support this.
+
+Recent changes in the `asyncio` module will have us reconsider how we implement this in PyGObject,
+as it will not work from Python 3.16 and onwards.
+
+Type support for PyGObject has been a thing for years. `PyGObject-stubs` surves that purpose quite
+well, but it would be nice if we can add support to static type checkers such as MyPy.
+
+Something I've been thinking about is a small tool that serves as a documentation generator for
+all your locally installed libraries. Since you may be working on an application that requires
+more libraries than just the ones documented on the api docs website.
 :::
 
 ## Call to Action

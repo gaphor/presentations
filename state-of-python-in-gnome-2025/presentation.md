@@ -59,7 +59,11 @@ PyGObject is the GTK and related library bindings for Python
 
 ::: notes
 
-Dan: PyGObject is Python in GNOME. It is the successor to PyGTK that James Henstridge started in 1998 that uses the girepository library to allow you to build GNOME apps using Python. If you see the patterns in the app icons here, those deep interests that people geek out on includes drawing and art, modeling, graphing, music, genealogy, manga, classic gaming, and scientific reports.
+Dan: PyGObject is Python in GNOME. It is the successor to PyGTK that James
+Henstridge started in 1998 that uses the girepository library to allow you to
+build GNOME apps using Python. If you see the patterns in the app icons here,
+those deep interests that people geek out on includes drawing and art, modeling,
+graphing, music, genealogy, manga, classic gaming, and scientific reports.
 
 :::
 
@@ -77,22 +81,13 @@ Dan: PyGObject is Python in GNOME. It is the successor to PyGTK that James Henst
 
 ::: notes
 
-Dan: When GNOME 49 is released in September, it will include a new default video app called Video Player (with the codenamed Showtime). This is an example of the type of app that really shines using Python.
+Dan: When GNOME 49 is released in September, it will include a new default video
+app called Video Player (with the codenamed Showtime). This is an example of the
+type of app that really shines using Python.
 
 :::
 
-## What's New in GNOME Python
-
-* Improvements to AsyncIO support
-* Enhanced documentation and examples
-* Code formatting and linting
-* Migration to girepository 2.0
-* Automatic release pipeline
-* Other notable improvements
-
-::: notes
-
-:::
+# What's New in GNOME Python
 
 ## Improvements to AsyncIO support
 
@@ -142,8 +137,10 @@ https://api.pygobject.gnome.org
 :::
 
 ::: notes
-The documentation is coming along well. With asynchronous methods documented, we're
-pretty much on par with the functionality GObject provides.
+(I suggest we remove the bullet point about GTK3 docs)
+
+Dan: The documentation is coming along well. With asynchronous methods
+documented, we're pretty much on par with the functionality GObject provides.
 :::
 
 ## Migration to girepository 2.0
@@ -153,7 +150,7 @@ pretty much on par with the functionality GObject provides.
 * Unfortunate fallout: apps not able to upgrade due to dependency on gobject-introspection
 
 ::: notes
-This is kind of the elephant in the room. With PyGObject 3.52 we moved from gobject-introspection
+Arjan: This is kind of the elephant in the room. With PyGObject 3.52 we moved from gobject-introspection
 to girepository as the underlaying library for introspection bindings.
 
 Although girepository had a positive effect on the code, it turned out that a number of applications,
@@ -180,7 +177,7 @@ those issues from happening in the future.
 * A local documentation browser for all GI libraries on your system?
 
 ::: notes
-PyGObject has been stable and used for years. That's not going to change.
+Arjan: PyGObject has been stable and used for years. That's not going to change.
 
 The focus will be on bringing PyGObject into the futute.
 This means removing deprecated code, and adding support for new Python features.
@@ -215,7 +212,8 @@ https://gitlab.gnome.org/GNOME/pygobject
 - Blog and create videos
 
 ::: notes
-Many of you have even more ideas on what we could improve next, and we would love to have your contributions!
+Dan: Many of you have even more ideas on what we could improve next, and we
+would love to have your contributions!
 
 :::
 

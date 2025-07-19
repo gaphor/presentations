@@ -241,6 +241,25 @@ could be a something we try out soon.
 
 :::
 
+## Make development environment setup easier
+
+- Especially on Windows, a dev environment is difficult
+- Distributing compiled binaries through conda or wheels could make this much easier
+
+::: notes
+
+Dan: Right now, to build a PyGObject project you have to have GTK and friends installed. This
+experience is usually pretty ok on Linux, because the dependencies can be installed with
+your distribution's package manager. On Windows this is especially difficult, you need to
+use MSYS2 or Gvsbuild to install all the dependencies which isn't a typical development
+workflow. Conda solves this by distributing all the dependencies as packages and
+is cross platform. We could also build "fat wheels", which are Python binaries including
+the dynamic dependencies.
+
+Maybe we could add a conda and wheel image?
+
+:::
+
 ## Call to Action
 
 https://gitlab.gnome.org/GNOME/pygobject

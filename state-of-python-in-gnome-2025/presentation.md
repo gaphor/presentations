@@ -297,7 +297,8 @@ Dan: Right now, to build a PyGObject project you have to have GTK and friends in
 experience is usually pretty ok on Linux, because the dependencies can be installed with
 your distribution's package manager. On Windows this is especially difficult, you need to
 use MSYS2 or Gvsbuild to install all the dependencies which isn't a typical development
-workflow. Conda solves this by distributing all the dependencies as packages and
+workflow. Also it requires the user to manually load the dll directory prior to launching
+a PyGObject app. Conda solves this by distributing all the dependencies as packages and
 is cross platform. We could also build "fat wheels", which are Python binaries including
 the dynamic dependencies.
 

@@ -101,7 +101,6 @@ It's easier to start using `asyncio`:
 ```python
 asyncio.set_event_loop_policy(GLibEventLoopPolicy())
 app = Adw.Application(...)
-app.connect("activate", on_activate)
 app.run()
 ```
 vs.
@@ -186,8 +185,6 @@ those issues from happening in the future.
 
 * Better type support
 
-* A local documentation browser for all GI libraries on your system?
-
 ::: notes
 Arjan: PyGObject has been stable and used for years. That's not going to change.
 
@@ -270,7 +267,6 @@ https://gitlab.gnome.org/GNOME/pygobject
 - Help us fix bugs and implement features
 - Add examples to Workbench
 - Build projects with PyGObject
-- Chat with us at #python:gnome.org
 - Blog and create videos
 
 ::: notes
@@ -285,6 +281,8 @@ Thank you so much to everyone who has contributed to PyGObject!
 
 Slides:
 https://github.com/gaphor/presentations/tree/main/state-of-python-in-gnome-2025
+
+Matrix Chat with us at #python:gnome.org
 
 ::: notes
 

@@ -10,18 +10,23 @@
 :::: column
 Arjan Molenaar
 
+![](amolenaar.jpg){ height=45% }
+
 - From The Netherlands
 - PyGObject and Gaphor
 - GTK on macOS
+
 ::::
 
 :::: column
 Dan Yeaw (pronounced: Yaw)
 
-- Originally from California, now lives in Michigan
+![](danyeaw.jpg){ height=45% }
 
+- From California, now Michigan
 - PyGObject and Gaphor
 - Gvsbuild
+
 ::::
 
 :::

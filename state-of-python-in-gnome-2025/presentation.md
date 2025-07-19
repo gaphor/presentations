@@ -128,6 +128,17 @@ Unfortunately we have to revisit parts of the code: some features we currently r
 in Python 3.16 and produce deprecation warnings with Python 3.14.
 :::
 
+## Enumerations based on Python's `enum` module
+
+TODO: code example
+
+::: notes
+Since 3.52, GObject based enumerations and flags are based on the standard enum module.
+
+TODO: benefits
+:::
+
+
 ## Enhanced documentation and examples
 
 ::: columns

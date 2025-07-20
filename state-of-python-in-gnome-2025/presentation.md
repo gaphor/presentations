@@ -120,7 +120,7 @@ We've implemented asyncio support in Gaphor, our other project, as soon as it
 was available. And we're sooo happy. It makes the code so much simpler. Just not having to
 deal with all those callbacks is totally worth it.
 
-The credits for this feeature as all for Benjamin, as he did all the heavy lifting.
+The credits for this feature as all for Benjamin, as he did all the heavy lifting.
 
 We added the feature as an experimental feature in 3.50. In 3.52 a few convenience API's were added.
 
@@ -130,12 +130,26 @@ in Python 3.16 and produce deprecation warnings with Python 3.14.
 
 ## Enumerations based on Python's `enum` module
 
-TODO: code example
+* GObject enums behave like standard Python enums.
+
+* Both for enumerations and flags
+
+```python
+>>> Gtk.License.LGPL_3_0
+<License.LGPL_3_0: 5>
+>>> Gtk.License.LGPL_3_0.name
+'LGPL_3_0'
+```
+
+Kudos to James Henstridge
 
 ::: notes
 Since 3.52, GObject based enumerations and flags are based on the standard enum module.
 
-TODO: benefits
+Special code that deals with enums has been removed, leading to a substantial reduction in code.
+
+Being consistent with the standard library is a good thing.
+
 :::
 
 

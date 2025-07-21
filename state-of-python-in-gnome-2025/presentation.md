@@ -221,7 +221,7 @@ I believe it's better for the upcoming GNOME release. Emanualle Bassi has a talk
 those issues from happening in the future.
 :::
 
-## What's Next in GNOME Python
+# What's Next in GNOME Python
 
 * PyGObject is mature
 

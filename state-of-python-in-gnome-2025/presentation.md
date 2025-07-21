@@ -8,9 +8,10 @@
 ::: columns
 
 :::: column
-Arjan Molenaar
 
-![](amolenaar.jpg){ height=45% }
+![](amolenaar.jpg){ height=38% }
+
+Arjan Molenaar
 
 - From The Netherlands
 - PyGObject and Gaphor
@@ -19,9 +20,10 @@ Arjan Molenaar
 ::::
 
 :::: column
-Dan Yeaw (pronounced: Yaw)
 
-![](danyeaw.jpg){ height=45% }
+![](danyeaw.jpg){ height=38% }
+
+Dan Yeaw (pronounced: Yaw)
 
 - From California, now Michigan
 - PyGObject and Gaphor
@@ -60,7 +62,15 @@ a build system for GTK on Windows.
 
 PyGObject is the GTK and related library bindings for Python
 
-![](app-icons.png){height=65%}
+```{=latex}
+\begin{center}
+```
+
+![](app-icons.png){height=56%}
+
+```{=latex}
+\end{center}
+```
 
 ::: notes
 
@@ -78,7 +88,7 @@ graphing, music, genealogy, manga, classic gaming, and scientific reports.
 \begin{center}
 ```
 
-![](Showtime.png){ height=80% }
+![](Showtime.png){ height=68% }
 
 ```{=latex}
 \end{center}
@@ -114,7 +124,6 @@ with gi.events.GLibEventLoopPolicy():
 Kudos to Benjamin Berg
 
 ::: notes
-TODO: Should we add a before and after?
 
 We've implemented asyncio support in Gaphor, our other project, as soon as it
 was available. And we're sooo happy. It makes the code so much simpler. Just not having to
@@ -129,10 +138,20 @@ in Python 3.16 and produce deprecation warnings with Python 3.14.
 :::
 
 ## Enumerations based on Python's `enum` module
+::: columns
+
+:::: column
 
 * GObject enums behave like standard Python enums.
 
 * Both for enumerations and flags
+
+
+Kudos to James Henstridge
+
+::::
+
+:::: column
 
 ```python
 >>> Gtk.License.LGPL_3_0
@@ -141,7 +160,9 @@ in Python 3.16 and produce deprecation warnings with Python 3.14.
 'LGPL_3_0'
 ```
 
-Kudos to James Henstridge
+::::
+
+:::
 
 ::: notes
 Since 3.52, GObject based enumerations and flags are based on the standard enum module.
@@ -159,7 +180,9 @@ Being consistent with the standard library is a good thing.
 
 :::: column
 * The documentation is built using PyGObject
+
 * API docs are focused on GNOME core libs
+
 * Recently added docs for async methods
 ::::
 
@@ -284,15 +307,15 @@ Maybe we could add a conda and wheel image?
 
 ## Call to Action
 
-https://gitlab.gnome.org/GNOME/pygobject
+Contributions of any kind will help the community thrive
 
-- Contributions of any kind will help continue to help the community thrive
-- Submit and help triage issues
-- Continue to help us improve the docs
-- Help us fix bugs and implement features
-- Add examples to Workbench
-- Build projects with PyGObject
-- Blog and create videos
+- **Submit** and help triage issues
+- Help us **fix** bugs and implement features
+- Continue to help us **improve** the docs
+- Add examples to **Workbench**
+- **Build** projects with PyGObject
+- **Blog** and create videos
+- ...
 
 ::: notes
 Dan: Many of you have even more ideas on what we could improve next, and we
@@ -304,10 +327,13 @@ would love to have your contributions!
 
 Thank you so much to everyone who has contributed to PyGObject!
 
-Slides:
-https://github.com/gaphor/presentations/tree/main/state-of-python-in-gnome-2025
+https://pygobject.gnome.org/
 
-Matrix Chat with us at #python:gnome.org
+https://gitlab.gnome.org/GNOME/pygobject
+
+Chat with us on Matrix at `#python:gnome.org`
+
+Slides: https://github.com/gaphor/presentations/tree/main/state-of-python-in-gnome-2025
 
 ::: notes
 

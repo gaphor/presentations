@@ -125,7 +125,7 @@ Kudos to Benjamin Berg
 
 ::: notes
 
-We've implemented asyncio support in Gaphor, our other project, as soon as it
+Arjan: We've implemented asyncio support in Gaphor, our other project, as soon as it
 was available. And we're sooo happy. It makes the code so much simpler. Just not having to
 deal with all those callbacks is totally worth it.
 
@@ -208,6 +208,7 @@ is on par with the functionality GObject provides.
 * Unfortunate fallout: apps not able to upgrade due to dependency on gobject-introspection
 
 ::: notes
+
 Arjan: This is kind of the elephant in the room. With PyGObject 3.52 we moved from gobject-introspection
 to girepository as the underlaying library for introspection bindings.
 
@@ -234,6 +235,7 @@ those issues from happening in the future.
 * Better type support
 
 ::: notes
+
 Arjan: PyGObject has been stable and used for years. That's not going to change.
 
 The focus will be on bringing PyGObject into the future.
@@ -253,6 +255,7 @@ well, but it would be nice if we can add support to static type checkers such as
 Something I've been thinking about is a small tool that serves as a documentation generator for
 all your locally installed libraries. Since you may be working on an application that requires
 more libraries than just the ones documented on the api docs website.
+
 :::
 
 ## Adding Python Examples to docs
@@ -319,6 +322,7 @@ Contributions of any kind will help the community thrive
 - ...
 
 ::: notes
+
 Dan: Many of you have even more ideas on what we could improve next, and we
 would love to have your contributions!
 

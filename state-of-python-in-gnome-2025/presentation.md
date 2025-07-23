@@ -48,9 +48,9 @@ the support for GTK on macOS.
 
 Dan:
 As Engineering Manager for Open Source Software at Anaconda, I lead teams
-working on projects including BeeWare, PyScript, Jupyter, and fsspec. Over the
-past seven years, I've been actively contributing to open source projects while
-building the Michigan Python community as a leader and organizer.
+working on projects including Conda, BeeWare, PyScript, Jupyter, and fsspec.
+Over the past seven years, I've been actively contributing to open source
+projects while building the Michigan Python community as a leader and organizer.
 
 We also help maintain a Python GTK app called Gaphor which is a GNOME Circle
 app for doing SysML and UML modeling. I also help maintain Gvsbuild which is
@@ -294,6 +294,18 @@ could be a something we try out soon.
 - Especially on Windows, a dev environment is difficult
 - Distributing compiled binaries through conda or wheels could make this much easier
 
+::: columns
+
+:::: column
+![](conda.png){ height=10% }
+::::
+
+:::: column
+![](pypi.png){ height=20% }
+::::
+
+:::
+
 ::: notes
 
 Dan: Right now, to build a PyGObject project you have to have GTK and friends installed. This
@@ -319,7 +331,6 @@ Contributions of any kind will help the community thrive
 - Add examples to **Workbench**
 - **Build** projects with PyGObject
 - **Blog** and create videos
-- ...
 
 ::: notes
 
